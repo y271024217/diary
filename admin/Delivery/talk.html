@@ -1,0 +1,120 @@
+<?php require_once 'head.html';?>                                                         
+        <div class="span9">
+	<div class="row-fluid">
+		
+		<link type="text/css" rel="stylesheet" href="Delivery/css/link.css">
+<link type="text/css" rel="stylesheet" href="Delivery/css/bri.css">
+	<!-- 代码部分 -->
+
+			<div class="grid">
+
+
+
+				<div class="col-1-1 content-acticle">
+
+					<div id="comments">
+						<div class="ds-thread" id="ds-thread">
+							<div id="ds-reset">
+								<div class="ds-comments-info">
+
+									<ul class="ds-comments-tabs">
+
+										<li class="ds-tab">共 <span class="ds-highlight"><?php echo $count;?></span> 条心情</li> <small style="color:green; ">心情一旦发表将不能被修改，因为此时此刻你的心情是独一无二的
+											</small>
+									</ul>
+								</div>
+                           		<form method="post" action="?c=talk">
+									<div class="ds-textarea-wrapper d-rounded-top">
+										<textarea style="background-color: #FFFFFF;" name="content" placeholder="发表一条你今日心情.."></textarea>
+										<pre class="ds-hidden-text"></pre>
+									</div>
+									<div class="ds-post-toolbar">
+										<div class="ds-post-options ds-gradient-bg"></div>
+										<input class="ds-post-button" type="submit" name="talk_submit" value="发表" style="display: block; width: 60px;">
+										<div class="ds-toolbar-buttons">
+											<!-- 标记代码部分 -->
+										</div>
+									</div>
+								</form>
+
+								<!-- POST -->
+
+											<?php foreach($query as $Talk){?>					
+									<li class="ds-post"><div class="ds-post-self">
+										<div class="ds-avatar">
+											<img src="<?php echo $ver['img'];?>" alt="AnyDrew">
+										</div>
+										<div class="ds-comment-body">
+											<div class="ds-comment-header">
+												<span class="ds-user-name"><?php echo $Talk['at'];?></span>
+											</div>
+											<p><?php echo $Talk['content'];?></p>
+											<div class="ds-comment-footer ds-comment-actions">
+												<span class="ds-time" title="2013年12月7日 下午3:30:43"><?php echo date('Y-m-d', $Talk['times']);?></span>
+												<a class="ds-post-repost" onclick='if (confirm("确定删除？") == true){location.href="?c=talk&ip=del&id=<?php echo $Talk['id'];?>";}'>删除心情</a>
+											</div>
+										</div>
+									</div></li>
+									<?php }?>
+																				<!-- end POST -->
+
+								<div class="ds-paginator" style="display: block;">
+									<div class="ds-border"></div>
+									<?php if($p !== 1){?>
+									<a href="?c=talk&p=<?php echo $break;?>" class="ds-current">&lt;</a><?php }?>
+									<?php TalkP($pageCount, $p, 5);?>
+									<?php if($p !== $pageCount){?>
+									<a href="?c=talk&p=<?php echo $next;?>" class="ds-current">&gt;</a><?php }?>
+								</div>
+								<a name="respond"></a>
+
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+								
+															</div>
+		</div>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+		
+		</div>
+
+		
+	</div>
+</div>
+</div>
+
+<hr>
+<div style="margin-left:19px;margin-right:19px;">
+</div>
+</div>
+
+<script src="Delivery/js/jquery.js"></script>
+<script src="Delivery/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.dropdown-menu li a').hover(
+		function() {
+			$(this).children('i').addClass('icon-white');
+		},
+		function() {
+			$(this).children('i').removeClass('icon-white');
+		});
+	});
+	</script>
+</body>
+</html>
+        

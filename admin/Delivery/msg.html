@@ -1,0 +1,95 @@
+<?php require_once 'head.html';?>                                                                  
+                    
+                    <div class="container">
+                        
+                        <div class="row">                            
+                            <div class="col-md-12">
+                                
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>留言管理</h2>
+                                        <ul class="buttons">
+                                            <li><a href="#" class="block_loading"><span class="i-cycle"></span></a></li>
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>
+                                            <li><a href="#" class="block_remove"><span class="i-cancel-2"></span></a></li>
+                                        </ul>                                        
+                                    </div>
+                                    <div class="content np">
+                                        
+                                        <table cellpadding="0" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>                                    
+                                                    <th>头像</th>
+                                                    <th>记录</th>
+                                                    <th>发表者</th>
+                                                    <th>邮箱</th>     
+                                                    <th>时间</th> 
+                                                    <th>操作</th>                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i=1;foreach ($msg as $Msgs){?>
+                                                <tr>                                    
+                                                 <td width="100px;"><img src="<?php echo $Msgs['primg'];?>" style="width: 100px; height: 100px;"></td>
+					<td><a href="?c=msg&ip=reply&id=<?php echo $Msgs['id'];?>"><?php echo $Msgs['content'];?></a></td>
+					<td><?php echo $Msgs['names'];?></td>
+					<td><?php echo $Msgs['email'];?></td>
+					<td><?php echo date('Y-m-d H:i:s', $Msgs['times']);?></td>
+					<td>
+						<div class="btn-group">
+							<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">操作 <span class="caret"></span></a>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="?c=msg&ip=reply&id=<?php echo $Msgs['id'];?>"><i class="icon-pencil"></i> 回复</a></li>
+								
+								<li><a onclick='if (confirm("确定删除？") == true){location.href="?c=msg&ip=del&id=<?php echo $Msgs['id'];?>";}'><i class="icon-trash"></i> 删除</a></li>
+							</ul>
+						</div>
+					</td>                                 
+                                                </tr>
+                                                	<?php $i++;}?>
+                                                                    
+                                            </tbody>
+                                        </table>                                        
+                                        
+                                    </div>
+                                </div>
+                                
+                               
+                               
+                                
+                            </div>                                
+                        </div>
+ <!-- POCENT翻页API -->
+                      <div class="col-md-12">
+                                
+                                <div class="block">
+                                    <div class="head">
+                                    
+                                            
+                                        <div class="side fr" style="margin-top:6px;">
+                                            <ul class="pagination">                       
+                                            
+                                            <?php if($p !== 1){?><li><a href="?c=msg&p=<?php echo $break;?>">上页</a></li><?php }?>
+		             <?php MsgPage($pageCount, $p, 7);?>
+					<?php if($p !== $pageCount){?><li><a href="?c=msg&p=<?php echo $next;?>">下页</a></li><?php }?>                             
+                                                                                                
+                                            </ul>
+                                        </div>           
+                                    </div>
+                                </div>
+                                
+                            </div>
+                           <!-- POCENT翻页API --> 
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

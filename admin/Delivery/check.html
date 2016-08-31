@@ -1,0 +1,69 @@
+<?php require_once 'head.html';?>                                                             
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="block">
+                                    <div class="head">                                        
+                                        <h2>审核文章</h2>
+                                      
+                                    </div>                
+                                    <div class="content np">                
+
+                                        <form action="?c=opt&ip=check&id=<?php echo $_GET['id'];?>" method="post">
+                                                <fieldset title="Step 1">                            
+ 
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">投稿者:</div>
+                                                            <div class="col-md-5">
+                                                                <input type="text" value="<?php echo $checkArticle['athor']; ?>" disabled="disabled" class="validate[required,minSize[4]] form-control" value="<?php echo $EditArticle['title'];?>"/>
+                                                            </div>
+                                                          
+                                                        </div>  
+                                                        
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">联系方式(TEL):</div>
+                                                            <div class="col-md-5">
+                                                                <input type="text" value="<?php echo $checkArticle['con_tel']; ?>" disabled="disabled" class="validate[required,minSize[4]] form-control" value="<?php echo $EditArticle['title'];?>"/>
+                                                            </div>
+                                                          
+                                                        </div> 
+                                                        
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">类型(Type):</div>
+                                                            <div class="col-md-5">
+                                                              	<select name="byname">
+							<option value='0'>审核前请选一个存储类型</option>
+						   <option value='article' >将文章放置到文章类型</option>
+						   <option value='music' >将文章放置到音乐类型</option>
+						   <option value='video' >将文章放置到视频类型</option>
+						   <option value='images' >将文章放置到图片类型</option>
+						   <option value='down' >将文章放置到资源类型</option>
+							</select>
+                                                            </div>
+                                                          
+                                                        </div>                    
+                                                </fieldset>
+                                                <input name="check" type="submit" class="btn btn-primary finish" value="通过审核">
+                                        </form>                
+
+                                    </div>
+
+                                </div>
+
+                            </div>            
+
+                        </div>                        
+                        
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<script>
+var t1 = new Date().getTime();
+</script>
+<head>
+    <meta charset="utf-8" />
+    <title><?php echo !empty($search) ? $search." - ":"";?>搜索 -  <?php echo $_SITE['title'];?></title>
+     <meta name="keywords" content="<?php echo $_SITE['keyword'];?>" />            <meta name="description" content="<?php echo $_SITE['con'];?>" />
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="<?php echo TEMP_PATH;?>pocent/css/search.css" />
+    <script src="<?php echo TEMP_PATH;?>pocent/js/search.js" type="text/javascript"></script>
+</head>
+<body>
+
+    <div id="wrapper">
+        <div class="top-bar">
+                <span class="first"><a href="/">POCENT搜索</a></span>
+         
+        </div>
+        <div class="header-div">
+            <form class="search-form" action="?i=search" method="post">
+                <a href="" title="磁力搜索">
+                    <img style="width:50px; height:50px; border-radius:50%; overflow:hidden;" src="admin/<?php echo $users['img'];?>" alt="磁力搜索" class="nav-logo" />
+                </a>
+                <input type="text" id="search" title="Search" value="<?php echo $search;?>" autocomplete="off" name="q" />
+                <input type="submit"  name="search" id="btnSearch" value="搜 索" class="blue" />
+            </form>
+        </div>
+        
+    <div id="sort-bar">
+                <b>全部记录</b>
+
+    </div>
+
+        <div id="content">
+            <div id="wall">
+                <?php if($count){?>
+    <div class="search-statu">
+        <span>大约 <?php echo $count;?> 条结果，不过不会全部显示，耗时 <protty id="TimeShow"></protty> 毫秒。</span> <span>
+            
+        </span>
+    </div>
+       <?php foreach ($s['article'] as $v){ if($v['type']=='article'){?>
+            <div class="search-item">
+            <div class="item-title">
+                <h3>
+                    <a href="<?php if($v['type']=='video'){echo "?i=play&id=$v[id]";} if($v['type']=='article'){echo "?p=$v[id]";} if($v['type']=='music'){echo "?i=mp3&id=$v[id]";}?>" target="_blank"><?php echo str_replace("$search", "<b>$search</b>", $v['title']);?></a>
+                </h3>
+            </div>
+            <div class="item-list">
+                <ul>
+                            <li><?php echo iconv_substr(str_replace("$search", "<span style='color:red;'>$search</span>", strip_tags($v['content'])), 0 , 150 , "utf-8" );?>..</li>
+                </ul>
+            </div>
+            <div class="item-bar">
+                <span class="cpill fileType1"><?php  if ($v['type']=='video'){echo "视频";} if ($v['type']=='article'){echo "文章";} if ($v['type']=='music'){echo "音乐";} ?></span>
+                <span>
+                    发表时间：
+                        <b><?php echo date("Y:m:d", $v['times']);?></b>
+                </span><span>
+                    分类：
+                        <b><?php echo $v['ify_name'];?></b>
+
+                </span>
+                <span>浏览数：<b><?php echo $v['view'];?></b></span>
+                <span>作者：<b><?php echo $v['athor'];?></b></span>
+
+               
+            </div>
+        </div>
+ <?php } }?>
+    <div class="bottom-pager">
+                    <a href="<?php echo "?i=search&q=$search&p=1";?>"> &lt; </a>
+                       <?php SearchPage($pageCount, $p, 10, $search);?>
+                    <a href="<?php echo "?i=search&q=$search&p=$pageCount";?>"> &gt; </a>
+
+    </div>
+    
+                <div class="push">
+                </div>
+            </div>
+            <?php }else{?>
+         
+        <span>没有查找到记录，耗时 <protty id="TimeShow"></protty> 毫秒。</span> <span>
+            
+        </span>
+        <?php }?>
+        </div>
+        
+    
+    <div class="footer">
+        <span>©2015 POCENT</span>
+<span><a href="" rel="nofollow">站内搜索</a> </span>    </div>
+<script>
+
+window.onload = function()
+{
+document.getElementById("TimeShow").innerHTML = (new Date().getTime()-t1);
+}
+</script>
+</body>
+</html>

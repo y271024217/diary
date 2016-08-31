@@ -1,0 +1,143 @@
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="<?php echo TEMP_PATH;?>pocent/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_PATH;?>pocent/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_PATH;?>pocent/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_PATH;?>pocent/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_PATH;?>pocent/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_PATH;?>pocent/css/app.css" type="text/css" />  
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="<?php echo TEMP_PATH;?>pocent/js/ie/html5shiv.js"></script>
+    <script src="<?php echo TEMP_PATH;?>pocent/js/ie/respond.min.js"></script>
+    <script src="<?php echo TEMP_PATH;?>pocent/js/ie/excanvas.js"></script>
+  <![endif]-->
+</head>
+<body class="">
+  <section class="vbox">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+      <div class="navbar-header aside bg-info nav-xs">
+        <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+          <i class="icon-list"></i>
+        </a>
+        <a href="" class="navbar-brand text-lt">
+          <i class=" icon-social-twitter"></i>
+          <img src="images/logo.png" alt="." class="hide">
+          <span class="hidden-nav-xs m-l-sm"><?php echo $_SITE['logo_title'];?></span>
+        </a>	
+        <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+          <i class="icon-settings"></i>
+        </a>
+      </div>    
+      <form action="?i=search" method="post" class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search" target="_blank">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button name="search" value="搜索" type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+            </span>
+            <input type="text" name="q" class="form-control input-sm no-border rounded" placeholder="搜索,让世界更大..">
+          </div>
+        </div>
+      </form>
+      <div class="navbar-right ">
+        <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+         
+         
+          
+           <li class="dropdown">
+            <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="<?php if(!empty($_SESSION['nickname']) && !empty($_SESSION['id'])){echo "admin/" . $user['img'];}else{echo "Template/Engine/default/images/user.png";}?>" alt="...">
+              </span>
+              <?php if(!empty($_SESSION['nickname']) && !empty($_SESSION['id'])){echo $user['nickname'];}else{echo "个人中心";}?><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu animated fadeInRight">       
+            <?php if(!empty($_SESSION['nickname']) && !empty($_SESSION['id'])){?>     
+              <li>
+                <span class="arrow top"></span>
+               <a href="admin/?c=add_page">发表文章</a>
+              </li>
+              <li>
+                <a href="admin/?c=my">个人设置</a>
+              </li>
+              <li>
+                <a href="admin/?c=art">
+                  <span class="badge bg-danger pull-right"><?php echo CountAll($config);?></span>
+                  文章管理
+                </a>
+              </li>
+              <li>
+                <a href="http://www.pocent.com" target="_blank">API文档</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="admin/?c=out" >安全退出</a>
+              </li>
+              <?php }else{ ?>
+               <li>
+                <span class="arrow top"></span>
+               <a href="admin">登陆</a>
+              </li>
+     
+              
+              <?php }?>
+            </ul>
+          </li>
+          
+          
+          
+        </ul>
+      </div>      
+    </header>
+    <section>
+      <section class="hbox stretch">
+       
+        <section id="content">
+          <section class="vbox">
+            <section class="scrollable">
+              <section class="hbox stretch">
+                <aside class="aside-lg bg-light lter b-r">
+                  <section class="vbox">
+                    <section class="scrollable">
+                      <div class="wrapper">
+                        <div class="text-center m-b m-t">
+                          <a href="#" class="thumb-lg">
+                            <img src="admin/<?php echo $users['img'];?>" class="img-circle">
+                          </a>
+                          <div>
+                            <div class="h3 m-t-xs m-b-xs"><?php echo $users['nickname'];?></div>
+                            <small class="text-muted"><i class="fa fa-map-marker"></i> 北京</small>
+                          </div>                
+                        </div>
+                        <div class="panel wrapper">
+                          <div class="row text-center">
+                         <?php echo $users['user_bri'];?>
+                           
+                          </div>
+                        </div>
+                        <div class="btn-group btn-group-justified m-b">
+                          <a href="http://user.qzone.qq.com/<?php echo $users['qq_num'];?>" class="btn btn-success btn-rounded">
+                            <span class="text">
+                              <i class="fa fa-eye"></i> 查看更多
+                            </span>
+                           
+                          </a>
+                          <a href="http://t.qq.com/<?php echo $users['user_weibo'];?>" class="btn btn-dark btn-rounded">
+                            <i class="fa fa-comment-o"></i> 关注微博
+                          </a>
+                        </div>
+                        <div>
+                          <p class="text-uc text-xs text-muted">个人签名</p>
+                          
+                          
+                          <small><p><?php echo $users['sig'];?></p></small>
+                          <div class="line"></div>
+                           <p class="text-uc text-xs text-muted">更多</p>
+                         <!--   用户自定义 -->
+                          <small><p>QQ交流群：136660053 &nbsp;<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256403678'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256403678%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></p> </small>
+                        <!--   用户自定义结束 -->
+                        </div>
+                      </div>
+                    </section>
+                  </section>
+                </aside>

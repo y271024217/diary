@@ -1,0 +1,270 @@
+<?php require_once 'head.html';?>
+                    <div class="container">
+                                                
+                      
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>全局配置</h2>
+                                    </div>                  
+                                    <div class="content tabable np">
+    
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#btab-1" data-toggle="tab">网站配置</a></li>
+                                            <li><a href="#btab-2" data-toggle="tab">音乐配置</a></li>
+                                            <li><a href="#btab-3" data-toggle="tab">视频配置</a></li>
+                                            <li><a href="#btab-4" data-toggle="tab">文章配置</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="btab-1">
+                                             <form class="form-horizontal" action="?c=site" method="post" enctype="multipart/form-data">
+				<fieldset>
+				   <div class="controls-row">
+						<div class="col-md-2">LOGO</div>
+						<div class="col-md-5">
+							<input type="file" class="validate[required,custom[email]] form-control" id="logo" name="logo"/>
+							
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">标题</div>
+						<div class="col-md-5">
+							<input type="text" name="logo_title" class="validate[required,custom[email]] form-control" id="logo_title" value="<?php echo $site['logo_title'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">网站名称</div>
+						<div class="col-md-5">
+							<input type="text" name="title" class="validate[required,custom[email]] form-control" id="title" value="<?php echo $site['title'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">关键字</div>
+						<div class="col-md-5">
+							<input type="text" name="keys" class="validate[required,custom[email]] form-control" id="keys" value="<?php echo $site['keyword'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">简介</div>
+						<div class="col-md-5">
+							<input type="text" name="con" class="validate[required,custom[email]] form-control" id="con" value="<?php echo $site['con'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">分类显示条目数</div>
+						<div class="col-md-5">
+							<input type="radio" name="ify_ture_name" id="blankRadio1" value="1" aria-label="..."  <?php if($site['ify_ture_name']){echo 'checked="checked"';}?> > 开启  <input type="radio" name="ify_ture_name" id="blankRadio1" value="0" aria-label="..." <?php if(!$site['ify_ture_name']){echo 'checked="checked"';}?> > 关闭
+						<span style="color: red;"> (开启后将对服务器产生压力)</span></div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">网站风格</div>
+						<div class="col-md-5">
+							<select name="site_style">
+							<option value="1" <?php if($site['site_style']==1){echo "selected='selected'";}?> >全屏绿</option>
+							<option value="2"<?php if($site['site_style']==2){echo "selected='selected'";}?> >窄屏灰</option>
+							<option value="3"<?php if($site['site_style']==3){echo "selected='selected'";}?> >简约博客</option>
+							
+							<?php for ($i = 0; $i < $Temp_Json; $i ++) {
+                                   $Temp_Filed = getTemplate_admin($Templates[$Temp_Xml[$i]]);
+                                             ?>
+
+    <option value="<?php echo $Temp_Filed['inc'];?>"<?php if($site['site_style']==$Temp_Filed['inc']){echo "selected='selected'";}?> ><?php echo $Temp_Filed['title'];?></option>
+							
+							
+							
+		                                <?php }?>
+							
+							
+							
+							
+							</select>
+						</div>
+					</div>
+					
+					<div class="controls-row">
+						<div class="col-md-2">是否开启交互模块</div>
+						<div class="col-md-5">
+							<input type="radio" name="cat_ch" id="blankRadio1" value="1" aria-label="..."  <?php if($site['cat_ch']){echo 'checked="checked"';}?> > 开启  <input type="radio" name="cat_ch" id="blankRadio1" value="0" aria-label="..." <?php if(!$site['cat_ch']){echo 'checked="checked"';}?> > 关闭
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">网站URL</div>
+						<div class="col-md-5">
+							<input type="text" name="url" class="validate[required,custom[email]] form-control" id="url" value="<?php echo $site['url'];?>" />
+						</div>
+					</div>	
+					<div class="controls-row">
+						<div class="col-md-2">底部版权</div>
+						<div class="col-md-5">
+							<textarea class="validate[required,custom[email]] form-control" id="copy" name="copy"><?php echo $site['copy'];?></textarea>
+						</div>
+					</div>		
+					<div class="controls-row">
+						<input name="updata_site" type="submit" class="btn btn-success btn-large" value="保存设置" />
+					</div>					
+				</fieldset>
+			</form>
+                                            </div>
+                                            <div class="tab-pane" id="btab-2">
+                                          <!--   音乐 -->
+                                         <form class="form-horizontal" action="?c=site" method="post" enctype="multipart/form-data">
+				<fieldset>
+				<div class="controls-row">
+						<div class="col-md-2">是否开启本模块</div>
+						<div class="col-md-5">
+							<input type="radio" name="music_ch" id="blankRadio1" value="1" aria-label="..."  <?php if($site['music_ch']){echo 'checked="checked"';}?> > 开启  <input type="radio" name="music_ch" id="blankRadio1" value="0" aria-label="..." <?php if(!$site['music_ch']){echo 'checked="checked"';}?> > 关闭
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">模块名称</div>
+						<div class="col-md-5">
+							<input type="text" name="music_title" class="validate[required,custom[email]] form-control" id="music_title" value="<?php echo $site['music_title'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">页面配图(<a href="<?php echo $site['music_image'];?>" target="_blank">查看</a>)</div>
+						<div class="col-md-5">
+							<input type="text" name="music_image" class="validate[required,custom[email]] form-control" id="music_image" value="<?php echo $site['music_image'];?>" /> 
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">最新显示数目</div>
+						<div class="col-md-5">
+							<input type="text" name="music_rec" class="validate[required,custom[email]] form-control" id="music_rec" value="<?php echo $site['music_rec'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<input name="updata_music" type="submit" class="btn btn-success btn-large" value="保存设置" />
+					</div>					
+				</fieldset>
+			</form>
+                                            </div>
+                                            <div class="tab-pane" id="btab-3">
+                                            <!-- 视频 -->
+                                               <form class="form-horizontal" action="?c=site" method="post" enctype="multipart/form-data">
+				<fieldset>
+				<div class="controls-row">
+						<div class="col-md-2">是否开启本模块</div>
+						<div class="col-md-5">
+							<input type="radio" name="video_ch" id="blankRadio1" value="1" aria-label="..."  <?php if($site['video_ch']){echo 'checked="checked"';}?> > 开启  <input type="radio" name="video_ch" id="blankRadio1" value="0" aria-label="..." <?php if(!$site['video_ch']){echo 'checked="checked"';}?> > 关闭
+						</div>
+					</div>
+					<div class="controls-row">
+					<div class="col-md-2">模块名称</div>
+						<div class="col-md-5">
+							<input type="text" name="video_title" class="validate[required,custom[email]] form-control" id="video_title" value="<?php echo $site['video_title'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+					<div class="col-md-2">最新显示数目</div>
+						<div class="col-md-5">
+							<input type="text" name="video_rec" class="validate[required,custom[email]] form-control" id="video_rec" value="<?php echo $site['video_rec'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+					<div class="col-md-2">每页显示数目</div>
+						<div class="col-md-5">
+							<input type="text" name="video_rec_all" class="validate[required,custom[email]] form-control" id="video_rec_all" value="<?php echo $site['video_rec_all'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">推荐显示数目</div>
+						<div class="col-md-5">
+							<input type="text" name="video_mend" class="validate[required,custom[email]] form-control" id="video_mend" value="<?php echo $site['video_mend'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+					<div class="col-md-2">随机显示数目</div>
+						<div class="col-md-5">
+							<input type="text" name="video_rand" class="validate[required,custom[email]] form-control" id="video_rand" value="<?php echo $site['video_rand'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<input name="updata_video" type="submit" class="btn btn-success btn-large" value="保存设置" />
+					</div>					
+				</fieldset>
+			</form>
+                                            </div>   
+                                             <div class="tab-pane" id="btab-4">
+                                             <!-- 文章 -->
+                                             <form class="form-horizontal" action="?c=site" method="post" enctype="multipart/form-data">
+				<fieldset>
+				<div class="controls-row">
+					<div class="col-md-2">是否开启本模块</div>
+						<div class="col-md-5">
+							<input type="radio" name="article_ch" id="blankRadio1" value="1" aria-label="..."  <?php if($site['article_ch']){echo 'checked="checked"';}?> > 开启  <input type="radio" name="article_ch" id="blankRadio1" value="0" aria-label="..." <?php if(!$site['article_ch']){echo 'checked="checked"';}?> > 关闭
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">文章首页每篇字数预览</div>
+						<div class="col-md-5">
+							<input type="text" name="article_substr" class="validate[required,custom[email]] form-control" id="article_substr" value="<?php echo $site['article_substr'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+					<div class="col-md-2">最新文章显示条数</div>
+						<div class="col-md-5">
+							<input type="text" name="article_rec" class="validate[required,custom[email]] form-control" id="article_rec" value="<?php echo $site['article_rec'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+					<div class="col-md-2">首页是否预览图</div>
+						<div class="col-md-5">
+							<input type="radio" name="article_dom" id="article_dom" value="1" aria-label="..."  <?php if($site['article_dom']){echo 'checked="checked"';}?> > 开启  <input type="radio" name="article_dom" id="article_dom" value="0" aria-label="..." <?php if(!$site['article_dom']){echo 'checked="checked"';}?> > 关闭
+						</div>
+					</div>
+					<div class="controls-row">
+					<div class="col-md-2">是否开启投稿功能</div>
+						<div class="col-md-5">
+							<input type="radio" name="article_check" id="blankRadio1" value="1" aria-label="..."  <?php if($site['article_check']){echo 'checked="checked"';}?> > 开启  <input type="radio" name="article_check" id="blankRadio1" value="0" aria-label="..." <?php if(!$site['article_check']){echo 'checked="checked"';}?> > 关闭
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">文章边缘图片</div>
+						<div class="col-md-5">
+							<input type="text" name="article_dom_image" class="validate[required,custom[email]] form-control" id="article_dom_image" value="<?php echo $site['article_dom_image'];?>" /> 
+						</div>
+					</div>
+					<div class="controls-row">
+					<div class="col-md-2">随机文章显示条数</div>
+						<div class="col-md-5">
+							<input type="text" name="article_rand" class="validate[required,custom[email]] form-control" id="article_rand" value="<?php echo $site['article_rand'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+				<div class="col-md-2">推荐文章显示条数</div>
+						<div class="col-md-5">
+							<input type="text" name="article_mend" class="validate[required,custom[email]] form-control" id="article_mend" value="<?php echo $site['article_mend'];?>" />
+						</div>
+					</div>
+					<div class="controls-row">
+						<input name="updata_article" type="submit" class="btn btn-success btn-large" value="保存设置" />
+					</div>					
+				</fieldset>
+			</form>
+                                            </div>                                            
+                                        </div>
+                                                                             
+                                    </div>
+                                </div>                
+                            </div>
+                        </div>                         
+                     
+                        
+                        
+                     
+                        
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+    
+   
+</body>
+</html>

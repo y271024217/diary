@@ -1,0 +1,106 @@
+<?php require_once 'head.html';?>  <div class="container">
+
+                        <div class="row">
+                            
+                            <div class="col-md-12">
+                                
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>伪静态设置</h2>
+                                    </div>
+                                    <div class="content">
+                                        <div class="content np">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#btab-1" data-toggle="tab">伪静态设置</a></li>
+                                        </ul>
+                                          <form class="form-horizontal" action="?c=seo" method="post">
+                                          
+                                                <fieldset title="Step 1">                            
+ 
+                                                   
+                                                    <div class="controls-row">
+                                                    
+                                                            <div class="col-md-2">伪静态开关:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="radio" name="open" value="1" <?php if($site['seo_url']==1){echo 'checked';}?> > 开启 &nbsp;
+                                                            <input type="radio" name="open" value="2" <?php if($site['seo_url']==2){echo 'checked';}?> > 关闭 
+                                                            </div>
+                                                        </div>
+                                                      <div class="controls-row">
+                                                            <div class="col-md-2">文章链接别名:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="seo_article_name" class="form-control" style="width:100px;display:inline;" value="<?php echo $site['seo_article_name'];?>">.html
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">分类链接别名:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="seo_class_name" class="form-control" style="width:100px;display:inline;" value="<?php echo $site['seo_class_name'];?>">.html
+                                                            </div>
+                                                        </div>
+                                                      <div class="controls-row">
+                                                          
+                                                            <div class="col-md-5">
+                                                <input name="seo_set" type="submit" class="btn btn-primary finish" value="保存修改">
+                                                 </div>
+                                                        </div>
+                                                                                   
+                                                </fieldset>
+                                                
+                                        </form>                
+                                    </div>
+                                    </div>
+                                    <div class="footer">
+                                        <div class="side fl">
+                                           <div class="controls-row">
+                                                        
+                                                        <code><b>伪静态配置(.htaccess):</b><br>
+&lt;IfModule rewrite_module&gt;<br>
+RewriteEngine on<br>
+RewriteRule ^writings-(\d+)\.html$ index.php?g=$1<br>
+RewriteRule ^class-(\d+)\.html$ index.php?i=index&sort=$1<br>
+RewriteRule ^pages-(\d+)\.html$ index.php?i=index&m=$1<br>
+RewriteRule ^vages-(\d+)\.html$ index.php?i=video&m=$1<br>
+RewriteRule ^video-(\d+)\.html$ index.php?i=play&id=$1<br>
+RewriteRule ^index\.html$ index.php?i=index<br>
+RewriteRule ^music\.html$ index.php?i=music<br>
+RewriteRule ^video\.html$ index.php?i=video<br>
+RewriteRule ^chat\.html$ index.php?i=chat<br>
+&lt;/IfModule&gt;
+ </code>                                              </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="footer">
+                                        <div class="side fl">
+                                           <div class="controls-row">
+                                                        
+                                                        <code><b>模板伪静态化:</b><br>
+将模板的分类URL修改为：&lt;?php class_url($open, $name, $pid);?&gt;//参照官方API操作<br>
+将模板的文章URL修改为：&lt;?php art_url($open, $name, $id);?&gt;//参照官方API操作<br>
+将模板的分页URL修改为：&lt;?php page_url($open,$id);&gt;//参照官方API操作<br>
+将模板的视频分页URL修改为：&lt;?php vage_url($open,$id);&gt;//参照官方API操作<br>
+将模板的模块URL修改为：&lt;?php model($open, $name);&gt;//参照官方API操作<br>
+将模板的视频URL修改为：&lt;?php video_url($open, $name, $id);&gt;//参照官方API操作<br>
+<b style="color:green;">大多数模板都是写好伪静态了的,一般个别模板才需要进行模板伪静态化</b>
+ </code>                                              </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                
+                            </div>
+                                
+                        </div>                        
+                        
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

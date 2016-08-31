@@ -1,0 +1,290 @@
+#ds-thread #ds-reset .ds-comment-body a:hover, #ds-thread #ds-reset .ds-sort a.ds-current,
+	#ds-thread #ds-reset .ds-sort a:active, #ds-thread #ds-reset .ds-comments a.ds-user-name,
+	#ds-thread #ds-reset .ds-comments a.ds-user-name:hover {
+	color: #40aa52 !important
+}
+
+#ds-thread #ds-reset .ds-comment-header {
+	line-height: 16px
+}
+
+#ds-thread #ds-reset .ds-comment-header .ds-user-name, #ds-thread #ds-reset .ds-comment-header span
+	{
+	margin-right: 8px
+}
+
+#ds-thread #ds-reset .ds-comment-header span i {
+	font-style: normal;
+	padding-left: 20px
+}
+
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current {
+	border: 0;
+	color: #555;
+	text-shadow: none;
+	background-color: #efefef
+}
+
+#ds-thread #ds-reset .ds-highlight {
+	font-size: 14px;
+	font-weight: bold;
+	color: #40aa52 !important
+}
+
+#ds-thread #ds-reset li.ds-post, #ds-thread #ds-reset #ds-hot-posts {
+	padding-left: 15px;
+	overflow: visible
+}
+
+#ds-thread #ds-reset .ds-post-self {
+	margin-right: 20px;
+	padding: 10px 0 10px 10px
+}
+
+#ds-thread #ds-reset li.ds-post, #ds-thread #ds-reset .ds-post-self {
+	border: 0 !important
+}
+
+#ds-reset .ds-avatar, #ds-thread #ds-reset ul.ds-children .ds-avatar {
+	position: absolute;
+	top: 26px;
+	left: -14px;
+	padding: 5px;
+	width: 36px;
+	height: 36px;
+	box-shadow: -1px 0 1px #ccc inset;
+	border-radius: 46px;
+	background: #efefef
+}
+
+#ds-thread #ds-reset ul.ds-children .ds-avatar {
+	left: -23px
+}
+
+#ds-thread .ds-avatar a {
+	display: inline-block;
+	padding: 1px;
+	width: 32px;
+	height: 32px;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	background-color: #fff !important
+}
+
+#ds-thread .ds-avatar a:hover {
+	border-color: #40aa52
+}
+
+#ds-thread .ds-avatar>img {
+	margin: 2px 0 0 2px
+}
+
+#ds-thread #ds-reset .ds-replybox {
+	box-shadow: none
+}
+
+#ds-thread #ds-reset ul.ds-children {
+	margin-left: 30px
+}
+
+#ds-thread #ds-reset ul.ds-children .ds-replybox.ds-inline-replybox a.ds-avatar,
+	#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar {
+	left: 0;
+	top: 0;
+	padding: 0;
+	width: 32px !important;
+	height: 32px !important;
+	background: 0;
+	box-shadow: none
+}
+
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar img {
+	width: 32px !important;
+	height: 32px !important;
+	border-radius: 50%
+}
+
+#ds-reset .ds-replybox a.ds-avatar, #ds-reset .ds-replybox .ds-avatar img
+	{
+	padding: 0;
+	width: 50px !important;
+	height: 50px !important;
+	border-radius: 5px
+}
+
+#ds-reset .ds-avatar img {
+	width: 32px !important;
+	height: 32px !important;
+	border-radius: 32px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+	-webkit-transition: .4s all ease-in-out;
+	-moz-transition: .4s all ease-in-out;
+	-o-transition: .4s all ease-in-out;
+	-ms-transition: .4s all ease-in-out;
+	transition: .4s all ease-in-out
+}
+
+.ds-post-self:hover .ds-avatar img {
+	-webkit-transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+	transform: rotate(360deg)
+}
+
+#ds-thread #ds-reset .ds-comment-body {
+	background: #efefef;
+	padding: 15px 15px 12px 32px;
+	border-radius: 5px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .15), 0 1px 0
+		rgba(255, 255, 255, .75) inset
+}
+
+#ds-thread #ds-reset .ds-comment-body p {
+	color: #555
+}
+
+#ds-thread #ds-reset .ds-comment-body span.uaos {
+	font-size: 10px;
+	color: #555;
+	margin-left: 10px
+}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name {
+	font-weight: bold;
+	color: #40aa52 !important
+}
+
+#ds-thread #ds-reset .ds-comments span.ds-user-agent {
+	font-size: .8em;
+	color: #999
+}
+
+#ds-thread #ds-reset #ds-hot-posts {
+	border: 0
+}
+
+#ds-reset #ds-hot-posts .ds-gradient-bg {
+	background: 0
+}
+
+#ds-thread #ds-reset #ds-bubble {
+	display: none !important
+}
+
+#ds-reset #ds-bubble #ds-ctx .ds-ctx-entry {
+	padding: 0
+}
+
+#ds-reset #ds-bubble .ds-avatar, #ds-reset #ds-bubble #ds-ctx-bubble .ds-avatar a
+	{
+	position: static;
+	padding: 0;
+	border: 0;
+	background: 0;
+	box-shadow: none
+}
+
+#ds-reset #ds-bubble .ds-avatar img, #ds-reset #ds-bubble #ds-ctx-bubble .ds-avatar a
+	{
+	width: 45px !important;
+	height: 45px !important
+}
+
+#ds-reset #ds-bubble .ds-user-name {
+	padding-left: 13px
+}
+
+#ds-reset .ds-comment-body #ds-ctx {
+	border-left: 1px solid #b9baa6;
+	background-color: #e8e8dc !important
+}
+
+#ds-reset #ds-ctx {
+	margin-right: -15px
+}
+
+#ds-reset #ds-ctx .ds-ctx-entry {
+	position: relative;
+	padding: 10px 30px 10px 10px
+}
+
+#ds-reset #ds-ctx .ds-ctx-entry .ds-avatar {
+	top: 6px;
+	left: 5px;
+	background: 0;
+	box-shadow: none
+}
+
+#ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-body {
+	margin-left: 46px
+}
+
+#ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-content {
+	color: #787968
+}
+
+#ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+	color: #40aa52;
+	font-weight: bold
+}
+
+#ds-reset .ds-gradient-bg, #ds-thread #ds-reset .ds-textarea-wrapper {
+	background: 0
+}
+
+#ds-reset .ds-gradient-bg, #ds-thread #ds-reset .ds-textarea-blacklist {
+	width: 100%;
+	margin-right: 0;
+	padding: 0 !important;
+	border: 0;
+	background: #FFF none;
+	height: 74px;
+	line-height: 74px;
+	overflow-y: auto;
+	text-align: center
+}
+
+#ds-reset .ds-rounded-top {
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0
+}
+
+#ds-thread #ds-reset .ds-post-options {
+	-webkit-border-bottom-left-radius: 0
+}
+
+#ds-thread #ds-reset .ds-post-button {
+	color: #fff;
+	background-color: #40aa52;
+	border: 1px solid #40aa52;
+	background-image: none;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+	-webkit-border-bottom-right-radius: 0
+}
+
+#ds-thread #ds-reset .ds-post-button:hover, #ds-thread #ds-reset .ds-post-button:active
+	{
+	color: #333;
+	background-color: #efefef;
+	border: 1px solid #ccc
+}
+
+#ds-thread #ds-reset .ds-post-options, #ds-thread #ds-reset .ds-post-button
+	{
+	border-bottom-color: #ccc
+}
+
+#ds-thread #ds-reset .ds-post-button {
+	box-shadow: none;
+	text-shadow: none !important;
+	font-weight: normal !important
+}
+
+#ds-thread .ds-powered-by {
+	display: none !important
+}

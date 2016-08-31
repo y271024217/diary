@@ -1,0 +1,84 @@
+<?php require_once 'head.html';?>                                                                
+                    
+                    <div class="container">
+                                                
+                       
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>评论功能</h2>
+                                    </div>                  
+                                    <div class="content tabable np">
+    
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#btab-1" data-toggle="tab">配置</a></li>
+                                            <li><a href="#btab-2" data-toggle="tab">管理评论</a></li>
+                                            <li><a href="#btab-3" data-toggle="tab">独立评论系统</a></li>
+                                           
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="btab-1">
+                                                <form action="?c=mss" method="post"	>
+  <div class="control-group">
+						<label class="control-label" for="mss_html">评论API(默认畅言,请尽快获取自己网站的API)</label>
+						<div class="controls">
+							<textarea rows="10" style="width:100%;" class="input-xlarge" id="mss_html" name="mss_html"><?php echo $msg['mss_html'];?></textarea>
+						</div>
+  </div>	
+
+  
+  <div class="control-group">
+						<label class="control-label" for="mss_url">管理入口(管理地址)</label>
+						<div class="controls">
+							<input type="text" style="width:100%;" name="mss_url" class="" id="mss_url" value="<?php echo $msg['mss_url'];?>" />
+						</div>
+					</div>	
+					
+<input name="sub_mss" type="submit" class="btn btn-primary finish" value="保存设置">
+
+</form>
+                                            </div>
+                                            <div class="tab-pane" id="btab-2">
+                                               <iframe src="<?php echo $msg['mss_url'];?>" style="width: 100%; height: 600px; border:none;" scrolling="auto" noresize="noresize"> </iframe>
+                                            </div>
+                                               <div class="tab-pane" id="btab-3">
+                                               官方正在制作本功能,等待更新..
+                                            </div>                                
+                                        </div>
+                                                                             
+                                    </div>
+                                </div>                
+                            </div>
+                        </div>                         
+                        <!-- 更多 -->
+                      <div class="col-md-12">
+                                
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>更多评论系统：<a href="http://changyan.kuaizhan.com/install/code/pc" target="_blank"><button type="button" class="btn btn-info">畅言</button></a> 
+<a href="http://duoshuo.com/create-site/" target="_blank"><button type="button" class="btn btn-info">多说</button></a> 
+<a href="http://www.uyan.cc/getcode" target="_blank"><button type="button" class="btn btn-info">友言</button></a></h2>
+                                      
+                                    </div>
+                                </div>
+                                
+                            </div>
+                           <!-- 更多 --> 
+                        
+                                          
+                        
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+  
+    
+</body>
+</html>

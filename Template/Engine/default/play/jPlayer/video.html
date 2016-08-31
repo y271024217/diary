@@ -1,0 +1,30 @@
+<script>
+$(document).ready(function(){
+
+	  // video
+
+	  $("#jplayer_1").jPlayer({
+	    ready: function () {
+	      $(this).jPlayer("setMedia", {
+	        title: "<?php echo $video[title];?>",
+	        m4v: "<?php echo $video[rlink];?>",
+	        ogv: "<?php echo $video[rlink];?>",
+	        webmv: "<?php echo $video[rlink];?>",
+	        poster: "<?php echo TEMP_URL;?>/images/video.jpg"
+	      });
+	    },
+	    swfPath: "js",
+	    supplied: "webmv, ogv, m4v, mp4",
+	    size: {
+	      width: "100%",
+	      height: "469",
+	      cssClass: "jp-video-360p"
+	    },
+	    globalVolume: true,
+	    smoothPlayBar: true,
+	    keyEnabled: true
+	  });
+
+	});
+                 
+                 </script>

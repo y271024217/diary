@@ -1,0 +1,159 @@
+<?php if($SITE['article_check']){?>
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title>投稿 - <?php echo $SITE['title'];?></title>
+  <meta name="description" content="<?php echo $SITE['con'];?>">
+  <meta name="keywords" content="<?php echo $SITE['keyword'];?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="<?php echo TEMP_URL?>/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_URL?>/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_URL?>/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_URL?>/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_URL?>/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo TEMP_URL?>/css/app.css" type="text/css" />  
+  <link rel="stylesheet" href="<?php echo TEMP_URL?>/js/datepicker/datepicker.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo TEMP_URL?>/js/slider/slider.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo TEMP_URL?>/js/chosen/chosen.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+</head>
+<body class="">
+      <section class="hbox stretch">
+        <!-- .aside -->
+
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox">
+            <section class="scrollable padder">
+          
+
+
+              <section class="panel panel-default">
+                <header class="panel-heading font-bold">
+                 <center>文章投稿</center>
+                </header>
+                <div class="panel-body">
+                  <form class="form-horizontal" method="post" action="?i=write">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">作者:</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="athor" class="form-control" placeholder="请输入你的名字,这将成为本文作者..">
+                      </div>
+                    </div>
+                     <div class="line line-dashed b-b line-lg pull-in"></div>
+                     <div class="form-group">
+                      <label class="col-sm-2 control-label">手机:</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="con_tel" class="form-control" placeholder="请输入你的手机号,切记,别乱输入,如果文章得到嘉奖,会通过手机方式联系你给予奖励..">
+                      </div>
+                    </div>
+                     <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">文章标题</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="title" class="form-control" placeholder="请输入文章标题">
+                      </div>
+                    </div>
+              
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                 
+                
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">文章类型</label>
+                      <div class="col-sm-10">
+                        <select name="section" class="form-control m-b">
+                         <option value='CheckPage'>待审核</option>
+                        </select>
+                        
+                      </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group has-success">
+                      <label class="col-sm-2 control-label">资源链接</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="rlink" class="form-control" placeholder="可为空,用来做音乐地址或视频地址..">
+                      </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group has-warning">
+                      <label class="col-sm-2 control-label">资源图片</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="image_link" class="form-control" placeholder="可为空,音乐用来作为歌曲LOGO,视频作为列表显示的时候展示用..">
+                      </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">文章分类</label>
+                      <div class="col-sm-10">
+                        <select name="ify" class="form-control m-b">
+                          <option value='0'>未分类</option>
+                          <?php foreach ($ify as $v){?>
+							<option value='<?php echo $v['pid']?>'><?php echo $v['ify_name']?></option>
+							<?php }?>
+                        </select>
+                        
+                      </div>
+                    </div>
+           
+                    
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">内容</label>
+                      <div class="col-sm-10">
+                        
+                        
+                        <textarea id="editor" name="content" class="form-control" style="overflow:scroll;height:150px;" placeholder="请输入内容.."></textarea>
+                      </div>
+                    </div>
+
+                   
+                    
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                      <div class="col-sm-4 col-sm-offset-2">
+                        <input type="submit" class="btn btn-primary" name="submit" value="提交文章">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </section>
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+  <script src="<?php echo TEMP_URL?>/js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="<?php echo TEMP_URL?>/js/bootstrap.js"></script>
+  <!-- App -->
+  <script src="<?php echo TEMP_URL?>/js/app.js"></script>  
+  <script src="<?php echo TEMP_URL?>/js/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- datepicker -->
+  <script src="<?php echo TEMP_URL?>/js/datepicker/bootstrap-datepicker.js"></script>
+  <!-- slider -->
+  <script src="<?php echo TEMP_URL?>/js/slider/bootstrap-slider.js"></script>
+  <!-- file input -->  
+  <script src="<?php echo TEMP_URL?>/js/file-input/bootstrap-filestyle.min.js"></script>
+  <!-- wysiwyg -->
+  <script src="<?php echo TEMP_URL?>/js/wysiwyg/jquery.hotkeys.js"></script>
+  <script src="<?php echo TEMP_URL?>/js/wysiwyg/bootstrap-wysiwyg.js"></script>
+  <script src="<?php echo TEMP_URL?>/js/wysiwyg/demo.js"></script>
+  <!-- markdown -->
+  <script src="<?php echo TEMP_URL?>/js/markdown/epiceditor.min.js"></script>
+  <script src="<?php echo TEMP_URL?>/js/markdown/demo.js"></script>
+
+  <script src="<?php echo TEMP_URL?>/js/chosen/chosen.jquery.min.js"></script>
+  <script src="<?php echo TEMP_URL?>/js/app.plugin.js"></script>
+</body>
+</html>
+<?php }else{?>
+没有开启投稿功能~
+<?php }?>

@@ -1,0 +1,68 @@
+<?php require_once 'head.html';?>                                                             
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="block">
+                                    <div class="head">                                        
+                                        <h2>添加分类</h2>
+                                      
+                                    </div>                
+                                    <div class="content np">                
+
+                                        <form class="form-horizontal" action="?c=add_ify" method="post">
+				<fieldset>
+					<div class="controls-row">
+						<div class="col-md-2">分类名称</div>
+						<div class="col-md-10">
+							<input name="ify_name" type="text" class="validate[required,minSize[4]] form-control" id="role" />
+						</div>
+					</div>
+					
+					<div class="controls-row">
+						<div class="col-md-2">类型(Type)</div>
+						<div class="col-md-10">
+							<select name="byname">
+							<option>请选一个存储类型</option>
+						   <option value='article'>用于存储文章</option>
+						   <option value='music'>用于存储音乐</option>
+						   <option value='video'>用于存储视频</option>
+						   <option value='images'>用于存储图片</option>
+						   <option value='down'>用于存储资源</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="controls-row">
+						<div class="col-md-2">简介</div>
+						<div class="col-md-10">
+							<textarea name="the" class="validate[required,minSize[4]] form-control" id="the" /></textarea>
+						</div>
+					</div>
+				<div class="controls-row">
+					<div class="col-md-2">
+						<input name="add_ify" type="submit" class="btn btn-success btn-large" value="添加分类" />
+					</div>	</div>				
+				</fieldset>
+			</form>
+
+                                    </div>
+
+                                </div>
+
+                            </div>            
+
+                        </div>                        
+                        
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

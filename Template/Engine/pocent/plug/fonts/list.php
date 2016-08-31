@@ -1,0 +1,1 @@
+<?php exit;//[{"song_id":"1769902385","song_title":"\u6211\u7684\u6b4c\u58f0\u91cc"},{"song_id":"1769132283","song_title":"\u6211\u5f88\u5feb\u4e50"},{"song_id":"143401","song_title":"\u7eff\u5149"},{"song_id":"143390","song_title":"\u795e\u5947"},{"song_id":"1771287147","song_title":"\u6ef4\u7b54"}]

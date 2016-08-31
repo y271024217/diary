@@ -1,0 +1,65 @@
+<?php require_once 'head.html';?>
+                    <div class="container">
+                                                
+                     
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>数据库功能</h2>
+                                    </div>                  
+                                    <div class="content tabable np">
+    
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#btab-1" data-toggle="tab">备份数据库</a></li>
+                                            <li><a href="#btab-2" data-toggle="tab">还原数据库</a></li>
+                                            
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="btab-1">
+                                           <p>小P提示：勤备份，数据很重要！</p><hr style="margin:10px;">
+                                            <a href="?c=back&ip=backup"><button type="button" class="btn btn-info btn-large">开始备份</button></a>
+                                            
+                                            
+                                               </div>
+                                            <div class="tab-pane" id="btab-2">
+                                                <p>小P提示：<span style="color:red">本功能只能还原的文件只能是通过后台备份下的文件..!</span></p><hr style="margin:0px;padding:0px;">
+			
+			<form class="form-horizontal" action="?c=back&ip=backReturn" method="post" enctype="multipart/form-data">
+				<fieldset>
+				   <div class="controls-row">
+						<div class="col-md-2">选择数据库文件</div>
+						<div class="col-md-5">
+					<input id="sql" type="file" class="input-xlarge inputfile" id="sql" name="sql"/>
+          			</div>
+					</div>
+
+				<div class="controls-row"><div class="col-md-2">
+						<input name="sql_sub" type="submit" class="btn btn-success btn-large" value="开始还原数据库" /></div>
+					</div>				
+				</fieldset>
+			</form>
+                                                </div>
+                                                                                     
+                                        </div>
+                                                                             
+                                    </div>
+                                </div>                
+                            </div>
+                        </div>                         
+                        
+                                            
+                        
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+   
+    
+</body>
+</html>

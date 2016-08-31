@@ -1,0 +1,104 @@
+<?php require_once 'head.html';?>
+
+
+                    <div class="container">
+                        
+                        <div class="row">                            
+                            <div class="col-md-12">
+    
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>全部文章</h2>
+                                        <ul class="buttons">
+                                            <li><a href="?c=add_page">创建文章</a></li>
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>
+                                            <li><a href="#" class="block_remove"><span class="i-cancel-2"></span></a></li>
+                                        </ul>                                        
+                                    </div>
+                                    <div class="content np">
+                                        
+                                        <table cellpadding="0" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                   <!--  <th width="20"><input type="checkbox" class="checkall"/></th> -->
+                                                    <th width="100">作者</th>
+                                                    <th width="100">时间</th>
+                                                    <th>标题</th>                                                    
+                                                    <th width="70">操作</th>                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php  foreach($article as $art){?>
+                                                <tr>
+                                                  <!--   <td><input type="checkbox" name="checkbox"/></td> -->
+                                                    <td><?php echo $art['athor'];?></td>
+                                                    <td><?php echo date("Y-m-d",$art['times']);?></td>
+                                                    <td><a href="?c=opt&ip=edit&id=<?php echo $art['id'];?>"><?php echo $art['title'];?></a></td>
+                                                    <td><div class="btn-group">
+                                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">操作</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="?c=opt&ip=edit&id=<?php echo $art['id'];?>"><i class="icon-pencil"></i> 修改</a></li>
+								<li><a onclick='if (confirm("确定删除？") == true){location.href="?c=opt&ip=del&id=<?php echo $art['id'];?>";}'><i class="icon-trash"></i> 删除</a></li>
+								<?php if($art['type'] !== 'CheckPage'){ if($art['mend']){?> <li><a href="?c=opt&ip=mend&id=<?php echo $art['id'];?>&v=0"><i class="icon-refresh"></i> 取消</a></li><?php }else{?> <li><a href="?c=opt&ip=mend&id=<?php echo $art['id'];?>&v=1"><i class="icon-refresh"></i> 推荐</a></li> <?php } }else {?> <li><a href="?c=opt&ip=check&id=<?php echo $art['id'];?>"><i class="icon-refresh"></i> 审核</a></li><?php }?>
+                                                    </ul>                                                    
+                                                </div></td>                                    
+                                                </tr>
+                                                <?php } ?>
+                                                           
+                                            </tbody>
+                                        </table>                                        
+                                        
+                                    </div>
+                                </div>                                
+                                                       
+                                
+                            </div>                                
+                        </div>
+                       <!-- POCENT翻页API -->
+                      <div class="col-md-12">
+                                
+                                <div class="block">
+                                    <div class="head">
+                                        <h2><div class="col-md-9">
+                                                <select class="select2" style="width: 220px;" name="dh" onchange="javascript:location.href=this.value;">
+                    <option>选择类型查看</option>
+                    <option value="?c=art&go=article">文章栏目</option>
+                    <option value="?c=art&go=music">音乐栏目</option>
+                    <option value="?c=art&go=video">视频栏目</option>
+                    <option value="?c=art&go=images">图片栏目</option>
+                    <option value="?c=art&go=down">下载栏目</option>
+                    <option value="?c=art&go=CheckPage">待审核文章</option>                                              
+                                                </select>
+                                            </div><a href="?c=add_page"><button class="btn btn-success" type="button">新文章</button></a></h2>
+                                            
+                                        <div class="side fr" style="margin-top:6px;">
+                                            <ul class="pagination">                                                    
+                                                <li <?php if($n == 1){echo 'class="disabled"';}?>><a href="?c=art&p=<?php echo $shang;?>">«</a></li>
+                                                <?php 
+								
+									pagebar($pageCount, $n, 5, $type);
+									
+									?>
+                                                <li <?php if($n == $pageCount){echo 'class="disabled"';}?>><a href="?c=art&p=<?php echo $xia;?>">»</a></li>                                                    
+                                            </ul>
+                                        </div>           
+                                    </div>
+                                </div>
+                                
+                            </div>
+                           <!-- POCENT翻页API --> 
+                            
+
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

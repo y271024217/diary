@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title><?php echo $video['title'];?> - 在线播放 - <?php echo $SITE['title'];?></title>
+  <meta name="description" content="<?php echo $video['title'];?>">
+  <meta name="keywords" content="<?php echo $SITE['keyword'];?>">
+<?php require_once 'header.html';?>
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox">
+            <section class="scrollable wrapper-lg">
+              <div class="row">
+              
+              <div class="col-lg-12">
+                  <!-- .breadcrumb -->
+                  <ul class="breadcrumb">
+                    <li><a href="<?php model($SITE['seo_url'], 'video');?>"><i class="fa fa-home"></i> 首页</a></li>
+                    <li><a href="#"><i class="fa fa-list-ul"></i> <?php echo $video['ify_name'];?></a></li>
+                    <li class="active">播放</li>
+                  </ul>
+                  <!-- / .breadcrumb -->
+                </div>
+                
+                <div class="col-sm-8">
+                  <div class="panel">
+                    <!-- video player -->
+                    <div id="jp_container_1">
+                      <div class="jp-type-single pos-rlt">
+                      
+<?php require_once 'Template/BuildWorld/proIndex/player.php';?>
+
+								<div class="jp-no-solution hide">
+                          <span>Update Required</span>
+                          To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                        </div>
+                      </div>
+                    </div> 
+                    
+
+                    <!-- / video player -->
+                    <div class="wrapper-lg">
+                      <h2 class="m-t-none text-black"><?php echo $video[title];?></h2>
+                      <div class="text-muted">
+                        <i class="fa fa-user icon-muted"></i><a href="#" class="m-r-sm"><?php echo $video['athor'];?></a>
+                        <i class="fa fa-clock-o icon-muted"></i> <?php echo date('Y-m-d h:i:s',$video['times']);?>
+                        <a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i><?php echo $video['view'];?></a>
+                      </div>
+                       <div class="line b-b"></div>
+                      <div class="post-sum">
+                        <?php echo $video[content];?>
+                      </div>
+                             <div style="margin-top:20px;">
+								<div id="author-box">
+						<h3 style="height: 35px;font-size: 18px;"><i class="fa fa-github-alt"></i>&nbsp;作者：<?php echo $video['athor'];?></h3>
+						<div class="author-info">
+							<div class="author-avatar">
+								<img src="admin/<?php echo $users['img'];?>" alt="" height="64" width="64" class="avatar">
+							</div>
+							<div class="author-description">
+								<p><?php echo $users['sig'];?></p>
+								<ul class="author-social follows nb">
+									<!-- 分享代码 -->
+									<div class="bshare-custom">
+										<a title="分享到" href="http://www.bShare.cn/"
+											id="bshare-shareto" class="bshare-more">分享到</a><a
+											title="分享到QQ空间" class="bshare-qzone">QQ空间</a><a
+											title="分享到新浪微博" class="bshare-sinaminiblog">新浪微博</a><a
+											title="分享到人人网" class="bshare-renren">人人网</a><a
+											title="分享到腾讯微博" class="bshare-qqmb">腾讯微博</a><a
+											title="分享到网易微博" class="bshare-neteasemb">网易微博</a><a
+											title="更多平台"
+											class="bshare-more bshare-more-icon more-style-addthis"></a><span
+											class="BSHARE_COUNT bshare-share-count">0</span>
+									</div>
+									<script type="text/javascript" charset="utf-8"
+										src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script>
+									<script type="text/javascript" charset="utf-8"
+										src="http://static.bshare.cn/b/bshareC0.js"></script>
+										<!-- 分享代码 -->
+								</ul>
+							</div>
+							<div class="clear">
+							</div>
+						</div>
+					</div>
+					</div>
+                      
+                      
+                     
+                      
+                    </div>
+                  </div>
+<?php echo $SITE['mss_html'];?>  
+                </div>
+                
+                <div class="col-sm-4">
+                <?php if(MendCount('video' ,$config)){?>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">推荐视频</div>
+                    <div class="panel-body">
+                    <?php $me=0;foreach ($videoAll as $mend){if($mend['mend']){?>
+                      <article class="media">
+                        <a href="<?php video_url($SITE['seo_url'], 'video', $mend['id']);?>" class="pull-left thumb-lg m-t-xs">
+                          <img src="<?php echo $mend['image_link'];?>" style="width: 128px; height: 64px;">
+                        </a>
+                        <div class="media-body">                        
+                          <a href="<?php video_url($SITE['seo_url'], 'video', $mend['id']);?>" class="font-semibold"><?php echo $mend['title'];?></a>
+                          <div class="text-xs block m-t-xs"><a href="<?php video_url($SITE['seo_url'], 'video', $mend['id']);?>"><?php echo iconv_substr(strip_tags($mend['content']), 0 , 30 , "utf-8" );?>..</a></div>
+                        </div>
+                      </article>
+                     <?php $me++;if($me==$SITE['video_mend']){break;} } }?>
+                    </div>
+                  </div>
+                  <?php }?>
+                  
+                  <div class="panel panel-default">
+                    <div class="panel-heading">随机视频</div>
+                    <div class="panel-body">
+                    <?php $v=0;foreach ($videoAll as $rand){?>
+                      
+                      <article class="media">
+                        <a href="<?php video_url($SITE['seo_url'], 'video', $rand['id']);?>" class="pull-left thumb-lg m-t-xs">
+                          <img src="<?php echo $rand['image_link'];?>" style="width: 128px; height: 64px;">
+                        </a>
+                        <div class="media-body">                        
+                          <a href="<?php video_url($SITE['seo_url'], 'video', $rand['id']);?>" class="font-semibold"><?php echo $rand['title'];?></a>
+                          <div class="text-xs block m-t-xs"><a href="<?php video_url($SITE['seo_url'], 'video', $rand['id']);?>"><?php echo iconv_substr(strip_tags($rand['content']), 0 , 30 , "utf-8" );?>..</a></div>
+                        </div>
+                      </article>
+                     <?php $v++;if($v==$SITE['video_rand']){break;} }?>
+                    </div>
+                  </div>
+                  
+                  
+                </div>
+              </div>
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+
+                 <!--  底部加载 -->
+ <?php require_once TEMP_URL . 'footer.html';?>

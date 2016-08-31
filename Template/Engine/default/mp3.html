@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<title><?php echo $mp3['title'];?> - 电台 - <?php echo $SITE['title'];?></title>
+<meta name="keywords" content="<?php echo $SITE['keyword'];?>">
+<meta name="description" content="<?php echo $mp3['title'];?>">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" type="text/css"
+	href="<?php echo TEMP_URL?>js/mp3/src/css/conn.css">
+<link rel="stylesheet" type="text/css"
+	href="<?php echo TEMP_URL?>js/mp3/src/css/style.css">
+<link rel="stylesheet"
+	href="<?php echo TEMP_URL?>js/mp3/src/css/smusic.css" />
+<style rel="stylesheet">
+.page-title {
+	margin: 30px;
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+}
+
+.page-title h1 {
+	font-size: 30px;
+	padding: 30px 0;
+}
+
+.page-title a {
+	color: #fff;
+}
+</style>
+</head>
+<body style="background-color: rgb(<?php echo mt_rand(60,255);?>,<?php echo mt_rand(60,255);?>,<?php echo mt_rand(60,255);?>);">
+	<!--header/begin-->
+	<div id="header">
+		<div class="subnav">
+			<p class="sublogo">
+				<a href="?i=music" target="_blank"><img
+					src="<?php echo TEMP_URL?>js/mp3/src/img/logo.png" alt="首页"
+					width="160" height="40" border="0" /></a>
+			</p>
+			<p class="sublink">
+				<a href="?i=video">视频栏目</a> <a href="?i=music">音乐栏目</a> <a
+					href="?i=index">文章栏目</a> <a href="?i=index" target="_blank">首页</a>
+			</p>
+		</div>
+	</div>
+	<!--header/end-->
+
+
+
+
+	<div class="grid-music-container f-usn">
+		<div class="m-music-play-wrap">
+			<div class="u-cover"></div>
+			<div class="m-now-info">
+				<h1 class="u-music-title">
+					<strong>标题</strong><small>歌手</small>
+				</h1>
+				<div class="m-now-controls">
+					<div class="u-control u-process">
+						<span class="buffer-process"></span> <span class="current-process"></span>
+					</div>
+					<div class="u-control u-time">00:00/00:00</div>
+					<div class="u-control u-volume">
+						<div class="volume-process" data-volume="0.50">
+							<span class="volume-current"></span> <span class="volume-bar"></span>
+							<span class="volume-event"></span>
+						</div>
+						<a class="volume-control"></a>
+					</div>
+				</div>
+				<div class="m-play-controls">
+					<a class="u-play-btn prev" title="上一曲"></a> <a
+						class="u-play-btn ctrl-play play" title="暂停"></a> <a
+						class="u-play-btn next" title="下一曲"></a> <a
+						class="u-play-btn mode mode-list current" title="列表循环"></a> <a
+						class="u-play-btn mode mode-random" title="随机播放"></a> <a
+						class="u-play-btn mode mode-single" title="单曲循环"></a>
+				</div>
+			</div>
+		</div>
+		<div class="f-cb">&nbsp;</div>
+		<div class="m-music-list-wrap"></div>
+	</div>
+
+	<script> var musicList = [
+	                          {
+	                              title : '<?php echo $mp3['title'];?>',
+	                              singer : '<?php echo $mp3['content'];?>',
+	                              cover  : '<?php echo $mp3['image_link'];?>',
+	                              src    : '<?php echo $mp3['rlink'];?>'
+	                          }<?php foreach($ALL as $mp){ if($mp['id'] !== $mp3['id']){?>,
+	                          {
+	                              title : '<?php echo $mp['title'];?>',
+	                              singer : '<?php echo $mp['content'];?>',
+	                              cover  : '<?php echo $mp['image_link'];?>',
+	                              src    : '<?php echo $mp['rlink'];?>'
+	                          }<?php } }?>
+	                      ];</script>
+	<script src="<?php echo TEMP_URL?>js/mp3/src/js/smusic.min.js"></script>
+	<script>
+    new SMusic({
+        musicList : musicList
+    });
+</script>
+</body>
+</html>

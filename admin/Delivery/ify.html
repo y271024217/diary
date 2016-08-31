@@ -1,0 +1,90 @@
+<?php require_once 'head.html';?>                                                               
+                    
+                    <div class="container">
+                        
+                        <div class="row">                            
+                            <div class="col-md-12">
+                                
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>全部分类</h2>
+                                        <ul class="buttons">
+                                            <li><a href="?c=add_ify">创建分类</a></li>
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>
+                                            <li><a href="#" class="block_remove"><span class="i-cancel-2"></span></a></li>
+                                        </ul>                                        
+                                    </div>
+                                    <div class="content np">
+                                        
+                                        <table cellpadding="0" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>                                    
+                                                    <th width="15%">属性</th>
+                                                    <th width="20%">分类名</th>
+                                                    <th width="55%">简介</th>
+                                                    <th width="10%">操作</th>                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php foreach($ify as $names){?>
+                                                <tr>                                    
+                                                   <td><?php echo $names['alias'];?></td>
+					<td><a href="?c=opi&xp=edit&id=<?php echo $names['pid'];?>"><?php echo $names['ify_name'];?></a></td>
+					<td><?php echo $names['the'];?></td>
+					
+					<td>
+						<div class="btn-group">
+							<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">操作 <span class="caret"></span></a>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="?c=opi&xp=edit&id=<?php echo $names['pid'];?>"><i class="icon-pencil"></i> 修改</a></li>
+								
+								<li><a onclick='if (confirm("确定删除？") == true){location.href="?c=opi&xp=del&id=<?php echo $names['pid'];?>";}'><i class="icon-trash"></i> 删除</a></li>
+							</ul>
+						</div>
+					</td>                                   
+                                                </tr>
+                                            <?php } ?>                     
+                                            </tbody>
+                                        </table>                                        
+                                        
+                                    </div>
+                                </div>
+                               
+                             
+                            </div>                                
+                        </div>
+   <!-- POCENT翻页API -->
+                      <div class="col-md-12">
+                                
+                                <div class="block">
+                                    <div class="head">
+                                      
+                                            
+                                           
+                                        <div class="side fr" style="margin-top:6px;">
+                                            <ul class="pagination">                                                    
+                                              <li><a href="?c=ify&p=<?php if($n == 1){echo 1;}else{echo $n-1;}?>">上一页</a></li>
+		
+					<li><a href="?c=ify&p=<?php if($n == $pageCount){echo $pageCount;}else{echo $n+1;}?>">下一页</a></li> 
+					
+					                                              
+                                            </ul>
+                                        </div>           
+                                    </div>
+                                </div>
+                                
+                            </div>
+                           <!-- POCENT翻页API --> 
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

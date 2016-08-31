@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title>互动系统 - <?php echo $SITE['title'];?></title>
+  <meta name="description" content="<?php echo $SITE['con'];?>">
+  <meta name="keywords" content="<?php echo $SITE['keyword'];?>">
+<?php require_once 'header.html';?>
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox">
+            <section class="scrollable wrapper">
+                       
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <section class="panel panel-default">
+                        <header class="panel-heading bg-light no-border">
+                          <div class="clearfix">
+                            <a href="#" class="pull-left thumb-md avatar b-3x m-r">
+                              <img src="admin/<?php echo $users['img'];?>" alt="...">
+                            </a>
+                            <div class="clear">
+                              <div class="h3 m-t-xs m-b-xs">
+                                <?php echo $users['nickname'];?> 
+                                <i class="fa fa-circle text-success pull-right text-xs m-t-sm"></i>
+                              </div>
+                              <small class="text-muted"><?php echo $users['user_bri'];?></small>
+                            </div>
+                          </div>
+                        </header>
+                        <div class="list-group no-radius alt">
+                          <a class="list-group-item" href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=<?php echo $users['qq_num'];?>&website=<?php echo $SITE['title'];?>"  target="_blank">
+                            <span class="badge bg-success">添加好友</span>
+                            <i class="fa fa-comment icon-muted"></i> 
+                            <b>QQ</b><span style="margin-left:10px;"><?php echo $users['qq_num'];?></span>
+                          </a>
+                          <a class="list-group-item" href="mailto:<?php echo $users['user_mail'];?>" target="_blank">
+                            <span class="badge bg-info"><?php echo $mail_ext;?></span>
+                            <i class="fa fa-envelope icon-muted"></i> 
+                            <b>Email</b><span style="margin-left:10px;"><?php echo $users['user_mail'];?></span>
+                          </a>
+                          <a class="list-group-item" href="http://t.qq.com/<?php echo $users['user_weibo'];?>" target="_blank">
+                            <span class="badge bg-danger">腾讯微博</span>
+                            <i class="fa fa-pinterest icon-muted"></i> 
+                             <b>Weibo</b><span style="margin-left:10px;"><?php echo $users['user_weibo'];?></span>
+                          </a>
+                        </div>
+                      </section>
+                      <section class="panel panel-info">
+                       <!--  <div class="panel-body">
+                          <a href="#" class="thumb pull-right m-l m-t-xs avatar">
+                            <img src="http://q2.qlogo.cn/headimg_dl?dst_uin=10245388&spec=100" alt="...">
+                            <i class="on md b-white bottom"></i>
+                          </a>
+                          <div class="clear">
+                            <a href="#" class="text-info">@Mike Mcalidek <i class="icon-twitter"></i></a>
+                            <small class="block text-muted">2,415 followers / 225 tweets</small>
+                            <a href="#" class="btn btn-xs btn-success m-t-xs">Follow</a>
+                          </div>
+                        </div> -->
+                        
+								<a href="http://user.qzone.qq.com/<?php echo $users['qq_num'];?>" target="_blank"><img
+									src="<?php echo $users['user_qzone'];?>" style="width: 100%;height: 94px;"></a>
+									
+							</section>
+                    </div>
+                    <div class="col-sm-6">                  
+                      <section class="panel panel-default">
+                       
+                        
+                          <img alt="最新动态" title="最新动态" src="<?php echo $users['user_image_new'];?>" style="height: 158px; width: 100%">
+                          
+                        
+                        <ul class="list-group no-radius">
+                        <?php $i=0;foreach ($new_article as $new){?>
+                          <?php if($i == 0){?>
+                          <a target="_blank" href="<?php if($new['type']=='video'){echo "?i=play&id=$new[id]";}elseif($new['type']=='article'){echo "?i=page&id=$new[id]";}elseif($new['type']=='music'){echo "?i=mp3&id=$new[id]";}elseif($new['type']=='down'){echo "";}elseif($new['type']=='images'){echo "";};?>">
+                          <li class="list-group-item">
+                            <span class="pull-right"><?php echo $new['view'];?> <i class="fa fa-comment-o icon-muted"></i></span>
+                            <span class="label bg-primary"><?php if($new['type']=='video'){echo "视频";}elseif($new['type']=='article'){echo "文章";}elseif($new['type']=='music'){echo "音乐";}elseif($new['type']=='down'){echo "下载";}elseif($new['type']=='images'){echo "图片";};?></span>
+                            <?php echo iconv_substr($new['title'], 0 ,11 , "utf-8" );?>..
+                          </li>
+                          </a>
+                          <?php } if($i == 1){?>
+                          <a target="_blank" href="<?php if($new['type']=='video'){echo "?i=play&id=$new[id]";}elseif($new['type']=='article'){echo "?i=page&id=$new[id]";}elseif($new['type']=='music'){echo "?i=mp3&id=$new[id]";}elseif($new['type']=='down'){echo "";}elseif($new['type']=='images'){echo "";};?>">
+                          <li class="list-group-item">
+                            <span class="pull-right"><?php echo $new['view'];?> <i class="fa fa-comment-o icon-muted"></i></span>
+                            <span class="label bg-info"><?php if($new['type']=='video'){echo "视频";}elseif($new['type']=='article'){echo "文章";}elseif($new['type']=='music'){echo "音乐";}elseif($new['type']=='down'){echo "下载";}elseif($new['type']=='images'){echo "图片";};?></span>
+                            <?php echo iconv_substr($new['title'], 0 ,11 , "utf-8" );?>..
+                          </li>
+                          </a>
+                          <?php } if($i == 2){?>
+                          <a target="_blank" href="<?php if($new['type']=='video'){echo "?i=play&id=$new[id]";}elseif($new['type']=='article'){echo "?i=page&id=$new[id]";}elseif($new['type']=='music'){echo "?i=mp3&id=$new[id]";}elseif($new['type']=='down'){echo "";}elseif($new['type']=='images'){echo "";};?>">
+                          <li class="list-group-item">
+                            <span class="pull-right"><?php echo $new['view'];?> <i class="fa fa-comment-o icon-muted"></i></span>
+                            <span class="label bg-success"><?php if($new['type']=='video'){echo "视频";}elseif($new['type']=='article'){echo "文章";}elseif($new['type']=='music'){echo "音乐";}elseif($new['type']=='down'){echo "下载";}elseif($new['type']=='images'){echo "图片";};?></span>
+                            <?php echo iconv_substr($new['title'], 0 ,11 , "utf-8" );?>..
+                          </li>
+                          </a>
+                          <?php } if($i == 3){?>
+                          <a target="_blank" href="<?php if($new['type']=='video'){echo "?i=play&id=$new[id]";}elseif($new['type']=='article'){echo "?i=page&id=$new[id]";}elseif($new['type']=='music'){echo "?i=mp3&id=$new[id]";}elseif($new['type']=='down'){echo "";}elseif($new['type']=='images'){echo "";};?>">
+                          <li class="list-group-item">
+                            <span class="pull-right"><?php echo $new['view'];?> <i class="fa fa-comment-o icon-muted"></i></span>
+                            <span class="label bg-light"><?php if($new['type']=='video'){echo "视频";}elseif($new['type']=='article'){echo "文章";}elseif($new['type']=='music'){echo "音乐";}elseif($new['type']=='down'){echo "下载";}elseif($new['type']=='images'){echo "图片";};?></span>
+                            <?php echo iconv_substr($new['title'], 0 ,11 , "utf-8" );?>..
+                          </li>
+                          </a>
+                          <?php } $i++; if($i == 4){break;} }?>
+                        </ul>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <section class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="clearfix text-center m-t">
+                        <div class="inline">
+                          <div class="easypiechart" data-percent="75" data-line-width="5" data-bar-color="#4cc0c1" data-track-Color="#f5f5f5" data-scale-Color="false" data-size="134" data-line-cap='butt' data-animate="1000">
+                            <div class="thumb-lg">
+                              <img src="admin/<?php echo $users['img'];?>" class="img-circle" alt="...">
+                            </div>
+                          </div>
+                          <div class="h4 m-t m-b-xs"><?php echo $users['nickname'];?></div>
+                         <!--  如果要修改下面small里面的内容,请固定在12字内,否则网站布局会乱哦~ -->
+                          <small class="text-muted m-b">人生何其大、为何要回头</small>
+                        </div>                      
+                      </div>
+                    </div>
+                    <footer class="panel-footer bg-info text-center">
+                      <div class="row pull-out">
+                        <div class="col-xs-4">
+                          <div class="padder-v">
+                            <span class="m-b-xs h3 block text-white"><?php echo $articleCount;?></span>
+                            <small class="text-muted">文章</small>
+                          </div>
+                        </div>
+                        <div class="col-xs-4 dk">
+                          <div class="padder-v">
+                            <span class="m-b-xs h3 block text-white"><?php echo $TalkCount;?></span>
+                            <small class="text-muted">心情</small>
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="padder-v">
+                            <span class="m-b-xs h3 block text-white"><?php echo $count;?></span>
+                            <small class="text-muted">聊天</small>
+                          </div>
+                        </div>
+                      </div>
+                    </footer>
+                  </section>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <!-- chat -->
+                  <section class="panel panel-default">
+                    <header class="panel-heading">留言</header>
+                    <section class="chat-list panel-body">
+                      <article id="chat-id-1" class="chat-item left">
+                        <a href="#" class="pull-left thumb-sm avatar"><img src="admin/<?php echo $users['img'];?>" alt="..."></a>
+                        <section class="chat-body">
+                          <div class="panel b-light text-sm m-b-none">
+                            <div class="panel-body">
+                              <span class="arrow left"></span>
+                              <p class="m-b-none">你有什么对我想说的吗?</p>
+                            </div>
+                          </div>
+                          <small class="text-muted"><i class="fa fa-ok text-success"></i> 2秒前</small>
+                        </section>
+                      </article>
+                      <article id="chat-id-2" class="chat-item right">
+                        <a href="#" class="pull-right thumb-sm avatar"><img src="http://tupian.qqjay.com/tou3/2015/0728/1b9c84dfa341abb5b1f2f7ce05986cf4.jpg" class="img-circle" alt="..."></a>
+                        <section class="chat-body">                      
+                          <div class="panel bg-light text-sm m-b-none">
+                            <div class="panel-body">
+                              <span class="arrow right"></span>
+                              <p class="m-b-none">我应该按照下面的格式发送：<br>如果单纯聊天,随便聊,但是如果需要申请网站友情链接:带上网站名,和地址即可..</p>
+                            </div>
+                          </div>
+                          <small class="text-muted">1秒前</small>
+                        </section>
+                      </article>                          
+                    </section>
+                    <footer class="panel-footer">
+                      <!-- chat form -->
+                      <article class="chat-item" id="chat-form">
+                        <a class="pull-left thumb-sm avatar"><img src="<?php echo $imgs[0];?>" class="img-circle" alt="..."></a>
+                        <section class="chat-body">
+                          <form action="?i=post&ip=message" class="m-b-none" method="post">
+                            <div class="input-group">
+                              <input name="mss_content" type="text" class="form-control" placeholder="发表内容.." style="width: 70%;height: 40px">
+                              <input name="mss_name" type="text" class="form-control" placeholder="名字.." style="width: 15%; height: 40px">
+                              <input name="mss_mail" type="text" class="form-control" placeholder="邮箱.." style="width: 15%; height: 40px">
+                              <span class="input-group-btn">
+                                <input name="mss_submit" value="发表" class="btn btn-default" type="submit" style="height: 40px" />
+                              </span>
+                            </div>
+                          </form>
+                        </section>
+                      </article>
+                    </footer>
+                  </section>
+                  <!-- /chat -->            
+                  <section class="panel panel-default">
+                    <header class="panel-heading">                    
+                      <span class="label bg-dark"><?php echo $count;?></span> 条记录
+                    </header>
+                    <section class="panel-body slim-scroll" data-height="230px" data-size="10px">
+                     <?php foreach($MessAge as $mss){?>
+                      <article class="media">
+                        <span class="pull-left thumb-sm"><img src="<?php echo $mss['primg'];?>" alt="头像" class="img-circle"></span>
+                        <div class="media-body">
+                          <div class="pull-right media-xs text-center text-muted">
+                            <strong class="h4"><?php echo date('Y-m-d', $mss['times']);?></strong><br>
+                            <small class="label bg-light">Chat</small>
+                          </div>
+                          <!-- <a href="#" class="h4">等待添加</a> -->
+                          <small class="block"><a href="#" class=""><?php echo $mss['names'];?></a> <span class="label label-success">游客</span></small>
+                          <small class="block m-t-sm"><?php echo $mss['content'];?></small>
+                        </div>
+                      </article>
+                      <div class="line pull-in"></div>
+                      <?php }?>
+                    </section>
+                  </section>
+                </div>
+                <div class="col-lg-6">
+                  <!-- .comment-list -->
+                  <section class="comment-list block">
+                  <?php foreach($TalkQuery as $talk){?>
+                    <article id="comment-id-1" class="comment-item">
+                      <a class="pull-left thumb-sm avatar">
+                        <img src="admin/<?php echo $users['img'];?>" class="img-circle" alt="...">
+                      </a>
+                      <span class="arrow left"></span>
+                      <section class="comment-body panel panel-default">
+                        <header class="panel-heading bg-white">
+                          <a href="#"><?php echo $talk['at'];?></a>
+                          <label class="label bg-info m-l-xs">站长</label> 
+                          <span class="text-muted m-l-sm pull-right">
+                            <i class="fa fa-clock-o"></i>
+                            <?php echo date('Y-m-d', $talk['times']);?>
+                          </span>
+                        </header>
+                        <div class="panel-body">
+                          <div style="font-size: 12px;"><?php echo $talk['content'];?></div>
+                          <div class="comment-action m-t-sm">
+                            <a href="#" data-toggle="class" class="btn btn-default btn-xs active">
+                              <i class="fa fa-star-o text-muted text"></i>
+                              <i class="fa fa-star text-danger text-active"></i> 
+                              喜欢
+                            </a>
+                            <a target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php echo $_SERVER['HTTP_HOST'];?>&title=<?php echo $talk['content'];?>&summary=<?php echo $talk['content'];?>" class="btn btn-default btn-xs">
+                              <i class="fa fa-mail-reply text-muted"></i> 分享
+                            </a>
+                          </div>
+                        </div>
+                      </section>
+                    </article>
+                    <?php }?>
+                    <div class="col-sm-4 text-right text-center-xs" style="width: 100%;">                
+                      <ul class="pagination pagination-sm m-t-none m-b-none" style="width: 100%; margin-left: 30px;">
+                        <?php if($m !== 1){?>
+                        <li><a href="?i=chat&m=<?php echo $prepage;?>"><i class="fa fa-chevron-left"></i></a></li>
+                        <?php }?>
+                        <?php TalkPage($PageCount, $m, 5);?>
+                       <?php if($m !== $PageCount){?>
+                        <li><a href="?i=chat&m=<?php echo $nextpage;?>"><i class="fa fa-chevron-right"></i></a></li>
+                      <?php }?>
+                      </ul>
+                    </div>
+                    
+                </div>
+                
+              </div>
+              
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+                 <!--  底部加载 -->
+ <?php require_once TEMP_URL . 'footer.html';?>

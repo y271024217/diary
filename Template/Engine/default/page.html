@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title><?php echo $PRO['title'];?> - <?php echo $SITE['title'];?></title>
+  <meta name="description" content="<?php echo $PRO['title'];?>">
+  <meta name="keywords" content="<?php echo $SITE['keyword'];?>">
+ <?php require_once 'header.html';?>
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox">
+            <section class="scrollable wrapper-lg">
+              <div class="row">
+              
+              <div class="col-lg-12">
+                  <!-- .breadcrumb -->
+                  <ul class="breadcrumb">
+                    <li><a href="./"><i class="fa fa-home"></i> 首页</a></li>
+                    <li><a href="<?php class_url($SITE['seo_url'], $SITE['seo_class_name'], $PRO['ify']);?>"><i class="fa fa-list-ul"></i> <?php echo $PRO['ify_name'];?></a></li>
+                    <li class="active">正文</li>
+                  </ul>
+                  <!-- / .breadcrumb -->
+                </div>
+               
+                <div class="col-sm-9">
+                  <div class="blog-post">     
+                  <!-- 呈现  -->   
+                         
+                    <div class="post-item">
+                      <!-- <div class="post-media">
+                    <img src="<?php echo TEMP_URL?>/images/m42.jpg" class="img-full"> 
+                      </div> -->
+                      <div class="caption wrapper-lg">
+                        <h2 class="post-title"><a href="#"><?php echo $PRO['title'];?></a></h2>
+                        <div class="text-muted">
+                          <i class="fa fa-user icon-muted"></i> <a href="#" class="m-r-sm"><?php echo $PRO['athor'];?></a>
+                          <i class="fa fa-clock-o icon-muted"></i> <?php echo date('Y-m-d h:i:s',$PRO['times']);?>
+                          <a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i> <?php echo $PRO['view'];?></a>
+                          
+                        </div>
+                        <div class="line line-lg"></div>
+                        
+                        <div class="post-sum">
+                        <style>
+                        p img{
+	                      width:100%;
+                          height:100%;
+                        }
+                        </style>
+                         <?php echo $PRO['content'];?>
+                         
+                         
+                 
+                         
+                        </div>
+                        
+                       <div style="margin-top:20px;">
+									
+								
+								
+								<div id="author-box">
+						<h3 style="height: 35px;font-size: 18px;"><i class="fa fa-github-alt"></i>&nbsp;作者：<?php echo $PRO['athor'];?></h3>
+						<div class="author-info">
+							<div class="author-avatar">
+								<img src="admin/<?php echo $users['img'];?>" alt="" height="64" width="64" class="avatar">
+							</div>
+							<div class="author-description">
+								<p><?php echo $users['sig'];?></p>
+								<ul class="author-social follows nb">
+									<!-- 分享代码 -->
+									<div class="bshare-custom">
+										<a title="分享到" href="http://www.bShare.cn/"
+											id="bshare-shareto" class="bshare-more">分享到</a><a
+											title="分享到QQ空间" class="bshare-qzone">QQ空间</a><a
+											title="分享到新浪微博" class="bshare-sinaminiblog">新浪微博</a><a
+											title="分享到人人网" class="bshare-renren">人人网</a><a
+											title="分享到腾讯微博" class="bshare-qqmb">腾讯微博</a><a
+											title="分享到网易微博" class="bshare-neteasemb">网易微博</a><a
+											title="更多平台"
+											class="bshare-more bshare-more-icon more-style-addthis"></a><span
+											class="BSHARE_COUNT bshare-share-count">0</span>
+									</div>
+									<script type="text/javascript" charset="utf-8"
+										src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script>
+									<script type="text/javascript" charset="utf-8"
+										src="http://static.bshare.cn/b/bshareC0.js"></script>
+										<!-- 分享代码 -->
+								</ul>
+							</div>
+							<div class="clear">
+							</div>
+						</div>
+					</div>
+					</div>
+					
+                      </div>
+                    </div>
+                  
+                    <!--  呈现  --> 
+                  </div>
+                  <?php echo $SITE['mss_html'];?>
+                
+            
+                 
+               
+                </div>
+                <div class="col-sm-3">
+                 <!--  美妙音乐 -->
+               <?php if(!empty($PRO['rlink'])){?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">美妙音乐</div>
+                    <div class="panel-body">
+                   
+             
+                      <article class="media">
+                        
+                        <div class="media-body">                        
+                         
+   
+<object type="application/x-shockwave-flash" data="http://www.3464.com/tools/FlashMp3Player/dewplayer_multi.swf?mp3=<?php echo $PRO['rlink'];?>&autostart=1&autoreplay=0&volume=100" width="240" height="20" id="dewplayer-multi2"><br />
+<param name="wmode" value="Opaque"/><br />
+<param name="movie" value="http://www.3464.com/tools/FlashMp3Player/dewplayer_multi.swf?mp3=<?php echo $PRO['rlink'];?>&autostart=1&autoreplay=0&volume=100" /><br />
+</object>
+
+     
+                        </div>
+                      </article>
+                     
+                   
+                    </div>
+                  </div>
+                  <?php }?>
+                  <!-- ./ 美妙音乐 -->
+                  
+                
+                 <!--  推荐文章 -->
+               <?php if(MendCount('article' , $config)){?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">推荐文章</div>
+                    <div class="panel-body">
+                    <?php $s=0;foreach ($APP as $ING_MEND){?>
+                 <?php if($ING_MEND['mend']){?>
+                      <article class="media">
+                        
+                        <div class="media-body">                        
+                          <i class="fa fa-angle-right"></i> <a href="<?php art_url($SITE['seo_url'], $SITE['seo_article_name'], $ING_MEND['id']);?>" class="font-semibold"><?php echo $ING_MEND['title'];?></a>
+                        </div>
+                      </article>
+                      <?php }?>
+                    <?php $s++;if($s==$SITE['article_mend']){break;}}?>
+                    </div>
+                  </div>
+                  <?php }?>
+                  <!-- ./ 推荐文章 -->
+                  
+                  
+                  <!--  文章分类 -->
+               <?php if($CountIfy){?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">全部分类</div>
+                    <div class="panel-body">
+                    <?php foreach ($IFY as $ING){?>
+                       <li class="list-group-item">
+                      <a href="<?php class_url($SITE['seo_url'], $SITE['seo_class_name'], $ING['pid']);?>">
+                        <span class="badge pull-right"><?php if($SITE['ify_ture_name']){echo IENDARTCOUNT($ING['pid'], $config);}?></span>
+                        <?php echo $ING['ify_name']?>
+                      </a>
+                    </li>
+                      
+                    <?php }?>
+                    </div>
+                  </div>
+                  <?php }?>
+                  <!-- ./ 文章分类 -->
+                  
+                    <!--  随机文章 -->
+               <?php if($Count){?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">随机文章</div>
+                    <div class="panel-body">
+                    <?php foreach ($RAND as $RANING){?>
+                      <article class="media">
+                        
+                        <div class="media-body">                        
+                          <i class="fa fa-angle-right"></i> <a href="<?php art_url($SITE['seo_url'], $SITE['seo_article_name'], $RANING['id']);?>" class="font-semibold"><?php echo $RANING['title'];?></a>
+                        </div>
+                      </article>
+                      <?php }?>
+                    </div>
+                  </div>
+                <?php }?>
+                  <!-- ./ 随机文章 -->
+									<!-- <div class="tags m-b-lg l-h-2x">
+										<a href="#" class="label bg-primary">Bootstrap</a> <a href="#"
+											class="label bg-primary">Application</a> <a href="#"
+											class="label bg-primary">Apple</a> <a href="#"
+											class="label bg-primary">Less</a> <a href="#"
+											class="label bg-primary">Theme</a> <a href="#"
+											class="label bg-primary">Wordpress</a>
+									</div> -->
+						
+                  </div>
+                </div>
+              </div>
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+
+                   <!--  底部加载 -->
+ <?php require_once TEMP_URL . 'footer.html';?>

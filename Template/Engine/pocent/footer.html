@@ -1,0 +1,51 @@
+ <aside class="col-lg-3 b-l">
+                  <section class="vbox">
+                    <section class="scrollable padder-v">
+                      <div class="panel">
+                        <h4 class="font-thin padder">美好心情</h4>
+                       
+                        <ul class="list-group">
+                        <?php foreach ($talk as $t){ if(!empty($t)){?>
+                        <li class="list-group-item">
+                              <p class="text-uc text-xs text-muted"><?php echo $t['content'];?></p>
+                              <small class="block text-muted"><i class="fa fa-clock-o"></i> <?php echo date('Y-m-d', $t['times']);?></small>
+                          </li>
+                        <?php }else{ echo '没有记录!';}  }?>
+                          
+                        </ul>
+                      </div>
+                    
+                    
+                       <div class="panel">
+                        <h4 class="font-thin padder">友情链接</h4>
+                       
+                        <ul class="list-group">
+                         <li class="list-group-item">
+                         <?php foreach($Link as $url){?>
+<a style="margin-bottom: 5px; font-size:13px; width: 48%;" href="<?php echo $url['link_url'];?>" class="btn btn-s-md btn-default" target="_blank" title="<?php echo $url['link_content'];?>"><?php echo $url['link_title'];?></a>
+                          <?php }?>
+                          </li>
+                          
+                        
+                          
+                        </ul>
+                      </div>
+                    </section>
+                  </section>              
+                </aside>
+              </section>
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+    <script src="<?php echo TEMP_PATH;?>pocent/js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="<?php echo TEMP_PATH;?>pocent/js/bootstrap.js"></script>
+  <!-- App -->
+  <?php if($_SITE[talk_ch]){ if(empty($_GET)) {require_once TEMP_PATH . 'pocent/plug/protty.html';}}?>
+ <!--  music -->
+</body>
+</html>

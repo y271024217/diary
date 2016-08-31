@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title><?php echo $SITE['video_title'];?> - <?php echo $SITE['title'];?></title>
+    <meta name="description" content="<?php echo $SITE['con'];?>">
+  <meta name="keywords" content="<?php echo $SITE['keyword'];?>">
+<?php require_once 'header.html';?>
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox" id="bjax-el">
+            <section class="scrollable padder-lg">
+            
+            <?php if(MendCount('video' , $config)){?>
+              <h2 class="font-thin m-b">推荐视频</h2>
+              <div class="row row-sm">
+              <?php $i=0;foreach ($video as $app){?>
+              <?php if($app['mend']){?>
+                <div class="col-xs-12 col-sm-4">
+                  <div class="item">
+                    <div class="pos-rlt">
+                      <div class="item-overlay opacity r r-2x bg-black">
+                        <div class="center text-center m-t-n">
+                          <a href="<?php video_url($SITE['seo_url'], 'video', $app['id']);?>"><i class="fa fa-play-circle i-2x"></i></a>
+                        </div>
+                      </div>
+                      <div class="top">
+                        <span class="badge bg-dark m-l-sm m-t-sm">03:20</span>
+                      </div>
+                      <a href="<?php video_url($SITE['seo_url'], 'video', $app['id']);?>"><img src="<?php echo $app['image_link'];?>" alt="" style="height:198px;" class="r r-2x img-full"></a>
+                    </div>
+                    <div class="padder-v">
+                      <a href="<?php video_url($SITE['seo_url'], 'video', $app['id']);?>" class="text-ellipsis"><?php echo $app['title'];?></a>
+                      <a href="<?php video_url($SITE['seo_url'], 'video', $app['id']);?>" class="text-ellipsis text-xs text-muted"><?php echo $app['ify_name'];?></a>
+                    </div>
+                  </div>
+                </div>
+                <?php $i++;if($i == $SITE['video_rec'])break;} }?>
+              </div>
+              <?php }?>
+              <h3 class="font-thin m-b">全部视频</h3>
+              <div class="row row-sm">
+               <?php foreach ($video as $all_App){?>
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                  <div class="item">
+                    <div class="pos-rlt">
+                      <div class="item-overlay opacity r r-2x bg-black">
+                        <div class="center text-center m-t-n">
+                          <a href="<?php video_url($SITE['seo_url'], 'video', $all_App['id']);?>"><i class="fa fa-play-circle i-2x"></i></a>
+                        </div>
+                      </div>
+                      <a href="<?php video_url($SITE['seo_url'], 'video', $all_App['id']);?>"><img src="<?php echo $all_App['image_link'];?>" alt="" style="height:130px;" class="r r-2x img-full"></a>
+                    </div>
+                    <div class="padder-v">
+                      <a href="<?php video_url($SITE['seo_url'], 'video', $all_App['id']);?>" class="text-ellipsis"><?php echo $all_App['title'];?></a>
+                      <a href="<?php video_url($SITE['seo_url'], 'video', $all_App['id']);?>" class="text-ellipsis text-xs text-muted"><?php echo $all_App['ify_name'];?></a>
+                    </div>
+                  </div>
+                </div>
+             <?php }?>
+              </div>
+              <ul class="pagination pagination">
+                <li><a href="<?php echo vage_url($SITE['seo_url'],$n==1? 1 : $n-1); ?>"><i class="fa fa-chevron-left"></i></a></li>
+                <?php VIDEOPAGE($SITE['seo_url'], $videoCount, $n, 5); ?>
+                <li><a href="<?php echo vage_url($SITE['seo_url'],$n==$pageCount ? $pageCount : $n+1); ?>"><i class="fa fa-chevron-right"></i></a></li>
+              </ul>
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+                 <!--  底部加载 -->
+ <?php require_once TEMP_URL . 'footer.html';?>

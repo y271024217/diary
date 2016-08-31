@@ -1,0 +1,206 @@
+<?php if($_SESSION['user_login'] !== md5($ver['username'].$ver['password'].LOGIN_PROTTY) || empty($_SESSION['user_login']) || empty($_SESSION['id']) || empty($_SESSION['nickname'])) header("location:../admin")?>
+<!DOCTYPE html>
+<html lang="en">
+<head>        
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    <title>后台管理 - POCENT文章管理系统</title>
+    <link rel="icon" type="image/ico" href="favicon.ico"/>
+    
+    <link href="Delivery/css/stylesheets.css" rel="stylesheet" type="text/css" />        
+    
+    <!--[if lte IE 7]>        
+        <script type='text/javascript' src='Delivery/js/other/lte-ie7.js'></script>
+    <![endif]-->    
+    
+    <script type='text/javascript' src='Delivery/js/jquery/jquery.min.js'></script>
+    <script type='text/javascript' src='Delivery/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+    <script type='text/javascript' src='Delivery/js/jquery/jquery-migrate.min.js'></script>
+    <script type='text/javascript' src='Delivery/js/jquery/globalize.js'></script>
+    
+    <script type='text/javascript' src='Delivery/js/bootstrap/bootstrap.min.js'></script>
+    <script type='text/javascript' src='Delivery/js/cookies/jquery.cookies.2.2.0.min.js'></script>
+    
+    <script type='text/javascript' src='Delivery/js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js'></script>
+    <script type='text/javascript' src='Delivery/js/charts/excanvas.min.js'></script>    
+    <script type='text/javascript' src='Delivery/js/charts/jquery.flot.js'></script>    
+    <script type='text/javascript' src='Delivery/js/charts/jquery.flot.stack.js'></script>    
+    <script type='text/javascript' src='Delivery/js/charts/jquery.flot.pie.js'></script>
+    <script type='text/javascript' src='Delivery/js/charts/jquery.flot.resize.js'></script>    
+    
+    <script type='text/javascript' src='Delivery/js/morris/raphael-min.js'></script>
+    <script type='text/javascript' src='Delivery/js/morris/morris.min.js'></script>    
+    
+    <script type='text/javascript' src='Delivery/js/sparklines/jquery.sparkline.min.js'></script>    
+
+    <script type='text/javascript' src='Delivery/js/scrollup/jquery.scrollUp.min.js'></script>
+    
+    <script type='text/javascript' src='Delivery/js/plugins.js'></script>    
+    <script type='text/javascript' src='Delivery/js/actions.js'></script>
+    <script type='text/javascript' src='Delivery/js/charts.js'></script>    
+</head>
+<body>    
+    
+    <div id="wrapper">
+        
+        <div id="header">
+            
+            <div class="wrap">
+                
+                <a href="../" class="logo"></a>
+                
+                <div class="buttons fl">
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-sm c_layout">
+                            <span class="i-layout-8"></span>                            
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-sm c_screen">
+                            <span class="i-stretch"></span>                            
+                        </a>
+                    </div>                    
+                </div>
+                
+                <div class="buttons">
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-sm">
+                            <span class="i-cog"></span>
+                        </a>
+                        <div class="popup">
+                            <div class="head">
+                                <h2>视觉设置</h2>
+                            </div>
+                            <div class="content np">      
+                                <div class="row">
+                                    <div class="controls-row">
+                                        <div class="col-md-3">布局颜色:</div>
+                                        <div class="col-md-9 themes">
+                                            <a href="#" class="default tip" data-theme="" title="Default"></a>
+                                            <a href="#" class="dark tip" data-theme="themeDark" title="Dark"></a>
+                                            <a href="#" class="simple tip" data-theme="themeSimple" title="Simple"></a>
+                                            <div class="help-block">这将更改整个后台布局的颜色</div>
+                                        </div>
+                                    </div>               
+                                    <div class="controls-row">
+                                        <div class="col-md-3">背景颜色:</div>
+                                        <div class="col-md-9 backgrounds">
+                                            <a href="#" class="default tip" data-theme="" title="Default"></a>                                            
+                                            <a href="#" class="b_bcrosshatch" data-back="b_bcrosshatch"></a>
+                                            <a href="#" class="b_crosshatch" data-back="b_crosshatch"></a>
+                                            <a href="#" class="b_cube" data-back="b_cube"></a>
+                                            <a href="#" class="b_dots" data-back="b_dots"></a>
+                                            <a href="#" class="b_grid" data-back="b_grid"></a>
+                                            <a href="#" class="b_hline" data-back="b_hline"></a>
+                                            <a href="#" class="b_simple" data-back="b_simple"></a>
+                                            <a href="#" class="b_vline" data-back="b_vline"></a>
+                                            <div class="help-block">在单击“背景”将更改和保存设置</div>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <div class="side fr">
+                                    <button class="btn btn-primary popup-close">关闭</button>
+                                </div>                                
+                            </div>
+                        </div>                        
+                    </div>
+                 
+                    <div class="item">                        
+                        <div class="btn-group">                        
+                            <a href="#" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                <span class="i-forward"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="?c=site"><span class="i-profile"></span> 网站设置</a></li>
+                                <li><a href="?c=my"><span class="i-tools"></span> 个人设置</a></li>                                
+                                <li><a href="?c=out"><span class="i-forward"></span> 安全退出</a></li>
+                            </ul> 
+                        </div>
+                    </div>                
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div id="layout">
+        
+            <div id="sidebar">
+
+                <div class="user">
+                    <div class="pic">
+                        <img src="<?php echo $ver['img'];?>" style="width:26px; height:26px;"/>
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <a href="?c=my"><?php echo $ver['nickname'];?></a>
+                        </div>
+                        <div class="buttons">
+                            <a href="?c=my"><span class="i-cog"></span> 个人设置</a>
+                            <a href="?c=out"><span class="i-forward"></span> 安全退出</a>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="navigation">
+                    <li <?php echo $_GET['c'] == 'index' ? 'class="active"' :''?>>
+                        <a href="?c=index"><i class="i-tools"></i> 控制器</a>
+                    </li>
+                    <li class="openable open">
+                        <a href="#"><i class="  i-paperplane"></i> 内容管理</a>
+                        <ul>
+              <li <?php echo $_GET['c'] == 'art' ? 'class="active"' :''?>><a href="?c=art">文章管理</a></li>
+              <li <?php echo $_GET['c'] == 'ify' ? 'class="active"' :''?>><a href="?c=ify">分类管理</a></li>
+              <li <?php echo $_GET['c'] == 'mss' ? 'class="active"' :''?>><a href="?c=mss">评论功能</a></li>
+              <li <?php echo $_GET['c'] == 'talk' ? 'class="active"' :''?>><a href="?c=talk">每日心情</a></li>
+              <li <?php echo $_GET['c'] == 'msg' ? 'class="active"' :''?>><a href="?c=msg">留言管理</a></li>
+                          
+                        </ul>
+                    </li> 
+                    <li class="openable open">
+                        <a href="#"><i class="i-arrow-down-6"></i> 资源管理</a>
+                        <ul>
+              <li <?php echo $_GET['c'] == 'upload' ? 'class="active"' :''?>><a href="?c=upload">文件上传</a></li>                     
+                          
+                        </ul>                        
+                    </li>                
+                                               
+                    <li class="openable open">                        
+                        <a href="tables.html"><i class="i-cog-2"></i> 网站管理</a>
+                        <ul>
+              <li <?php echo $_GET['c'] == 'template' ? 'class="active"' :''?>><a href="?c=template">模板设置</a></li>
+              <li <?php echo $_GET['c'] == 'seo' ? 'class="active"' :''?>><a href="?c=seo">SEO优化</a></li>
+              <li <?php echo $_GET['c'] == 'temp' ? 'class="active"' :''?>><a href="?c=temp">模板上传</a></li>
+              <li <?php echo $_GET['c'] == 'my' ? 'class="active"' :''?>><a href="?c=my">个人设置</a></li>
+              <li <?php echo $_GET['c'] == 'link' ? 'class="active"' :''?>><a href="?c=link">友情链接</a></li>
+              <li <?php echo $_GET['c'] == 'site' ? 'class="active"' :''?>><a href="?c=site">全局配置</a></li>
+              <li <?php echo $_GET['c'] == 'back' ? 'class="active"' :''?>><a href="?c=back">网站备份</a></li>
+                           
+                        </ul>
+                    </li>                 
+             
+                </ul>
+
+            </div>
+            
+               <div id="content">                        
+                <div class="wrap">
+
+                    <div class="head">
+                        <div class="info">
+                            <h1>POCENT后台管理系统</h1>
+                            <ul class="breadcrumb">
+                                <li class="active"><?php
+eval(gzinflate(base64_decode('AWQAm/8gZWNobyAi6K6k6K+B5ZSv5LiA5a6Y572R77yaV3d3LlBPQ0VOVC5Db23vvIzku47njrDlnKjlvIDlp4vvvIznlLHmiJHkvLTkvaDml4XooYwuLiI7JF9LRVlfQ09QWT0nMSc7')));
+//版权提示?></li>
+                            </ul>
+                        </div>               
+                    </div> 
+<?php 
+eval(gzinflate(base64_decode('U8hM00jNLSip1FCJ93aNjHf2D4jU1KxOTc7IV1C3ScksU0jOSSwutlVKzEktKlEAk7opiXnpqUVKdjbFJUX5eel2L9Yuezqx61n/hOdLdlkp2OhDhRVerN/+tHv/k/3rnk3Z+WxO59PWzU929T3v7Hg2t/nJ/oXPGtc/n9UC0aXzdMKypx0zn6/ofrqr/9n0Bc82T322dvHTHTte7J/wYmGPzot1S16sb3w6Zf2THQ1P1814vnfi+z2zysvL9Qryk1PzSvSS83NtkkpLSvLzFEoqC1JtlSAcJZjrk3Pyi1OVFFISSxJ1UzKLczPhXlKyOzzdRh+i3M5GH+hjO3Xr1IrMEutaAA==')));
+//功能加载?>

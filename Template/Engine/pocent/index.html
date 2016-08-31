@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+<meta charset="utf-8" />
+<title><?php echo $_SITE['title'];?></title>
+<meta name="keywords" content="<?php echo $_SITE['keyword'];?>">
+<meta name="description" content="<?php echo $_SITE['con'];?>" />
+
+<?php require_once 'header.html';?>
+<aside class="bg-white">
+	<section class="vbox">
+		<header class="header bg-light lt">
+			<ul class="nav nav-tabs nav-white">
+				<?php $i=0;foreach($IFY as $csname){?>
+				<?php if(!$i){?>
+				<li class="active"><a href="#<?php echo $csname['pid'];?>"
+					data-toggle="tab">
+						<?php echo $csname['ify_name'];?>
+				</a></li>
+				<?php }else{ if(articleInc($csname[pid], $config)){?>
+				<li><a href="#<?php echo $csname['pid'];?>" data-toggle="tab">
+						<?php echo $csname['ify_name'];?>
+				</a></li>
+				<?php } } $i++; }?>
+			</ul>
+		</header>
+		<section class="scrollable">
+			<div class="tab-content">
+				<!--    开始 -->
+				<?php $s=0;foreach($IFY as $csname){ if(!$s){$s++;?>
+
+
+				<div class="tab-pane active" id="<?php echo $csname['pid'];?>">
+					<ul
+						class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+
+						<?php foreach (articleInc($csname[pid], $config) as $article){?>
+						<li class="list-group-item"><a href="#"
+							class="thumb-sm pull-left m-r-sm"> <img
+								src="admin/<?php echo $users['img'];?>"
+								class="img-circle">
+						</a> <a href="?p=<?php echo $article['id'];?>"> <small
+								class="pull-right">
+									<?php echo date('Y-m-d h:i:s', $article['times']);?>
+							</small> <strong class="block" style="margin-bottom: 5px;">
+									<?php echo $article['athor'];?>
+							</strong> <small>
+									<?php echo $article['title'];?>
+							</small>
+						</a></li>
+						<?php }?>
+
+
+					</ul>
+				</div>
+
+
+				<!--  结束 -->
+
+				<?php }else{  if(articleInc($csname[pid], $config)){?>
+
+				<!--    开始 -->
+				<div class="tab-pane" id="<?php echo $csname['pid'];?>">
+
+					<ul
+						class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+						<?php foreach (articleInc($csname[pid], $config) as $article){?>
+						<li class="list-group-item"><a href="#"
+							class="thumb-sm pull-left m-r-sm"> <img
+								src="admin/<?php echo $users['img'];?>"
+								class="img-circle">
+						</a> <a href="?p=<?php echo $article['id'];?>"> <small
+								class="pull-right">
+									<?php echo date('Y-m-d h:i:s', $article['times']);?>
+							</small> <strong class="block" style="margin-bottom: 5px;">
+									<?php echo $article['athor'];?>
+							</strong> <small>
+									<?php echo $article['title'];?>
+							</small>
+						</a></li>
+						<?php } ?>
+					</ul>
+
+				</div>
+				<?php } }  }?>
+				<!--  结束-->
+
+
+			</div>
+		</section>
+	</section>
+</aside>
+<?php require_once 'footer.html';?>

@@ -1,0 +1,165 @@
+<?php require_once 'head.html';?>                                                                
+                    
+                    <div class="container">
+                                                
+                       
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>模板设置</h2>
+                                    </div>                  
+                                    <div class="content tabable np">
+    
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#btab-1" data-toggle="tab">虾米音乐播放器</a></li>
+                                            <li><a href="#btab-2" data-toggle="tab">其他</a></li>
+                                        
+                                           
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="btab-1">
+                                                
+                                                
+                                                 <div class="row-fluid">
+		
+			<?php if(count($music)){?>
+			<table class="table table-striped table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>虾米ID</th>
+						<th>歌曲名</th>
+						<th>时间</th>
+						<th>作者</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<script>			
+								</script>
+				<?php  $i=1; foreach($music as $mp3){?>
+				<tr class="list-upload">
+					<td><?php echo $i;?></td>
+					<td><?php echo $mp3['rlink'];?></td>
+					<td><?php echo $mp3['title'];?></td>
+					<td><?php echo date('Y-m-d h:i:s', $mp3['times']);?></td>
+					<td><?php echo $mp3['athor'];?></td>
+					<td><a style="text-decoration:none;cursor:pointer;" onclick='if (confirm("确定删除？") == true){location.href="?c=template&ip=del&id=<?php echo $mp3['id'];?>";}'>删除</a></td>
+				</tr>
+				<?php $i++;}?>
+					
+				</tbody>
+			</table>
+			
+				<div class="side fr" style="margin-top:6px;">
+                                            <ul class="pagination">      
+				<?php if ($p !== 1){?>
+					<li><a href="?c=upload&p=<?php echo $break;?>">上页</a></li><?php }?>
+					
+				  <?php pagenum($pageCount, $p, 10);?>
+				
+					<?php if ($p !== $pageCount){?><li><a href="?c=upload&p=<?php echo $next;?>">下页</a></li><?php }?>
+
+				</ul>
+				
+			</div>
+			<?php }else{?>
+			<p>一首歌都没有呀，好坏好坏的~</p><hr>
+			<?php }?>
+			
+			
+			<form class="form-horizontal" action="?c=template" method="post">
+			<div class="block">
+                                    <div class="head">
+                                        <h2>添加虾米音乐</h2>
+                                    </div>
+                                    <div class="content np">                                        
+                                       
+                                        <div class="controls-row">
+                                            <div class="col-md-3">音乐名称:</div>
+                                            <div class="col-md-9">
+                                                <div class="input-group file">
+                                                    <input type="text" name="xiami_music" placeholder="这首歌的名字.."  class="form-control"/> 
+                                                </div>
+                                            </div>
+                                        </div>     
+                                        
+                                         <div class="controls-row">
+                                            <div class="col-md-3">虾米音乐ID:</div>
+                                            <div class="col-md-9">
+                                                <div class="input-group file">
+                                                    <input type="text" name="xiami_id" placeholder="虾米音乐ID就是浏览器地址xiami.com/song/后面的数字"  class="form-control"/>
+                                                    <div class="input-group-btn">
+                                                        <input class="btn btn-default" name="xiami_add" type="submit" value="添加歌曲" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                      
+                                                                      
+                                    </div>                                    
+                                </div>
+			</form>
+			
+			
+			
+		  </div>
+                                                
+                                                
+                                            </div>
+                                            <div class="tab-pane" id="btab-2">
+                                             <form class="form-horizontal" action="?c=template" method="post" enctype="multipart/form-data">
+				<fieldset>
+				<div class="control-group">
+						<div class="controls-row">
+                                            <div class="col-md-3">是否开启虾米音乐播放器:</div>
+                                            <div class="col-md-9">
+                                                <label class="radio-uni inline"><input type="radio" name="talk_ch" id="blankRadio1" value="1" aria-label="..."  <?php if($site['talk_ch']){echo 'checked="checked"';}?> > 开启  <input type="radio" name="talk_ch" id="blankRadio1" value="0" aria-label="..." <?php if(!$site['talk_ch']){echo 'checked="checked"';}?> > 关闭
+                                               
+                                            </div>
+                                        </div> 
+					
+					</div>
+					
+					<div class="control-group">
+						<div class="controls-row">
+                                            <div class="col-md-3">最新心情显示条目:</div>
+                                            <div class="col-md-9">
+                                                <input type="text" name="talk_rec"  value="<?php echo $site['talk_rec'];?>">
+                                               
+                                            </div>
+                                        </div> 
+					
+					</div>
+					
+					<div class="control-group"><div class="col-md-3">
+						<input name="all_sub" type="submit" class="btn btn-success btn-large" value="保存设置" /></div>
+					</div>					
+				</fieldset>
+			</form>
+                                            </div>
+                                                                            
+                                        </div>
+                                                                             
+                                    </div>
+                                </div>                
+                            </div>
+                        </div>                         
+                     
+                        
+                                          
+                        
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+  
+    
+</body>
+</html>

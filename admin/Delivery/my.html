@@ -1,0 +1,129 @@
+<?php require_once 'head.html';?>
+
+
+                    <div class="container">
+                        
+                        <div class="row">                            
+                            <div class="col-md-12">
+    
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>个人设置</h2>
+                                        <ul class="buttons">
+                                            <li><a href="#" class="block_loading"><span class="i-cycle"></span></a></li>
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>
+                                            <li><a href="#" class="block_remove"><span class="i-cancel-2"></span></a></li>
+                                        </ul>                                        
+                                    </div>
+                                    <div class="content np">
+
+                                          <form class="form-horizontal" action="?c=my" method="post" enctype="multipart/form-data">
+                                                <fieldset title="Step 1">                            
+ 
+                                                      <div class="controls-row">
+                                                            <div class="col-md-2"></div>
+                                                            <div class="col-md-5"><img src="<?php echo $ver['img'];?>" style="width:100px; height:100px; border-radius:50%; overflow:hidden;">
+                                                              <input id="file" type="file" class="validate[required,minSize[4]] form-control inputfile" id="touxiang" name="touxiang"/>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">用户名:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="u" class="validate[required,minSize[4]] form-control" id="name" value="<?php echo $ver['username'];?>" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">密码:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="p" class="validate[required,minSize[4]] form-control" id="email" placeholder="不修改请留空.." />
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">呢称:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="n" class="validate[required,minSize[4]] form-control" id="phone" value="<?php echo $ver['nickname'];?>" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">签名:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="q" class="validate[required,minSize[4]] form-control" id="qian" value="<?php echo $ver['sig'];?>" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">性别:</div>
+                                                            <div class="col-md-5">
+                                                               <select id="sex" name="sex">
+								<option value="1" <?php if($ver[sex]==1)echo 'selected = "selected"';?>>女</option>
+								<option value="2" <?php if($ver[sex]==2)echo 'selected = "selected"';?> >男</option>
+							                                  </select>
+                                                            </div>
+                                                        </div>  
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">QQ:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="qq_num" class="validate[required,minSize[4]] form-control" id="qq_num" value="<?php echo $ver['qq_num'];?>" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">邮箱:</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="user_mail" class="validate[required,minSize[4]] form-control" id="user_mail" value="<?php echo $ver['user_mail'];?>" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">笔言(20字内):</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="user_bri" class="validate[required,minSize[4]] form-control" id="user_bri" value="<?php echo $ver['user_bri'];?>" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">腾讯微博(账号):</div>
+                                                            <div class="col-md-5">
+                                                           <input type="text" name="user_weibo" class="validate[required,minSize[4]] form-control" id="user_weibo" value="<?php echo $ver['user_weibo'];?>" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">展示图(400*160):</div>
+                                                            <div class="col-md-5">
+                                                            <input type="text" name="user_image_new" class="validate[required,minSize[4]] form-control" id="user_image_new" value="<?php echo $ver['user_image_new'];?>" />
+							 <a href="<?php echo $ver['user_image_new'];?>" target="_blank"><img title="点击查看大图" alt="点击查看大图" style="height: 28px;" src="<?php echo $ver['user_image_new'];?>"> 查看</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">QQ空间签名档:</div>
+                                                            <div class="col-md-5">
+                                                          <input type="text" name="user_qzone" class="validate[required,minSize[4]] form-control" id="user_qzone" value="<?php echo $ver['user_qzone'];?>" /> <a href="http://connect.qq.com/intro/signature" target="_blank">获取KEY地址</a> (src后双引号的全部内容)
+                                                            </div>
+                                                        </div>
+                                                         
+                                                                                   
+                                                </fieldset>
+                                                <input name="update_set" type="submit" class="btn btn-primary finish" value="保存修改">
+                                        </form>                
+                                    </div>
+                                </div>                                
+                                                       
+                           
+                         
+                                
+                                
+                            </div>                                
+                        </div>
+                       
+                            
+
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

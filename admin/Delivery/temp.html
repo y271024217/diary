@@ -1,0 +1,104 @@
+<?php require_once 'head.html';?>
+
+
+                    <div class="container">
+                        
+                        <div class="row">                            
+                            <div class="col-md-12">
+    
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>已安装模板列表</h2>
+                                        <ul class="buttons">
+                                            <li><a href="#" class="block_loading"><span class="i-cycle"></span></a></li>
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>
+                                            <li><a href="#" class="block_remove"><span class="i-cancel-2"></span></a></li>
+                                        </ul>                                        
+                                    </div>
+                                    <div class="content np">
+                                     <?php if($Temp_Json){?>
+			<table class="table table-striped table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>模板名称</th>
+						<th>模板作者</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<script>			
+								</script>
+				<?php for ($i = 0; $i < $Temp_Json; $i ++) {
+                                   $Temp_Filed = getTemplate_admin($Templates[$Temp_Xml[$i]]);
+                                             ?>
+				<tr class="list-upload">
+					<td><?php echo $i+1;?></td>
+					<td><a href="?c=temp&ip=exe&q=<?php echo $Temp_Xml[$i];?>"><?php echo $Temp_Filed['title'];?></a></td>
+	
+					<td><?php echo $Temp_Filed['athor'];?></td>
+					<td><a style="text-decoration:none;cursor:pointer;" onclick='if (confirm("确定删除？") == true){location.href="?c=temp&ip=del&file=<?php echo $Temp_Xml[$i];?>";}'>删除</a></td>
+				</tr>
+				<?php }?>
+					
+				</tbody>
+			</table>
+			
+				
+			<?php }else{?>
+			<p>你OUT啦，一个模板都不装，好坏好坏的~</p><hr>
+			<?php }?>               
+                                        
+                                    </div>
+                                </div>                                
+                                                       
+                                
+                            <form class="form-horizontal" action="?c=temp" method="post" enctype="multipart/form-data">
+			<div class="block">
+                                    <div class="head">
+                                        <h2>上传</h2>
+                                    </div>
+                                    <div class="content np">                                        
+                                        <div class="controls-row">
+                                            <div class="col-md-3">模板选择:</div>
+                                            <div class="col-md-9">
+                                                <input type="file" class="form-control" name="temp_link"/>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="controls-row">
+                                            <div class="col-md-3">上传模板:</div>
+                                            <div class="col-md-9">
+                                                <div class="input-group file">
+                                                    <div class="input-group-btn">
+                                                        <input class="btn btn-default" name="temp_upload" type="submit" value="开始上传" >
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>                          
+                                                                      
+                                    </div>                                    
+                                </div>
+			</form>           
+                         
+                                
+                                
+                            </div>                                
+                        </div>
+                       
+                            
+
+                    </div>                    
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

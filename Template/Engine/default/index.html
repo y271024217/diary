@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title><?php echo $SITE['title'];?></title>
+  <meta name="description" content="<?php echo $SITE['con'];?>">
+  <meta name="keywords" content="<?php echo $SITE['keyword'];?>">
+<?php require_once 'header.html';?>
+
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox">
+            <section class="scrollable wrapper-lg">
+              <div class="row">
+              <?php if(!empty($_GET['sort'])){?>
+              <div class="col-lg-12">
+                  <!-- .breadcrumb -->
+                  <ul class="breadcrumb">
+                    <li><a href="./"><i class="fa fa-home"></i> 首页</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-list-ul"></i> <?php echo $ify_go['ify_name'];?></a></li>
+                  </ul>
+                  <!-- / .breadcrumb -->
+                </div>
+                <?php }?>
+                <div class="col-sm-9">
+                  <div class="blog-post">     
+                  <!-- 开始循环  -->   
+                  <?php if (!count($APP)){echo "这个分类暂时没有记录!";}?>
+                  <?php foreach ($APP as $API){?>          
+                    <div class="post-item">
+                    <?php if($SITE['article_dom']){?>
+                    <div class="post-media">
+                    <img class="img-full" style="height: 60px;" <?php preg_match("/<img([\s\S]+?)src=(.*?)>/",$API['content'],$img); if (!empty($img)){echo "src=$img[2]";}else{echo "src=" . $SITE['article_dom_image'];}?> >
+                      </div>
+                      <?php }?>
+                      <div class="caption wrapper-lg">
+                        <h2 class="post-title"><pjax_protty class="nav-primary"><a href="<?php art_url($SITE['seo_url'], $SITE['seo_article_name'], $API['id']);?>"><?php echo $API['title'];?></a></pjax_protty></h2>
+                        <div class="post-sum" >
+                        <?php echo iconv_substr(strip_tags($API['content']), 0 , $SITE['article_substr'] , "utf-8" );?>
+                      
+                        </div>
+                        <div class="line line-lg"></div>
+                        <div class="text-muted">
+                          <i class="fa fa-user icon-muted"></i> <a href="<?php art_url($SITE['seo_url'], $SITE['seo_article_name'], $API['id']);?>" class="m-r-sm"><?php echo $API['athor'];?></a>
+                          <i class="fa fa-clock-o icon-muted"></i> <?php echo date('Y-m-d h:i:s',$API['times']);?>
+                          <a href="<?php art_url($SITE['seo_url'], $SITE['seo_article_name'], $API['id']);?>" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i> <?php echo $API['view'];?></a>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <?php }?>
+                    <!-- 结束循环  --> 
+                  </div>
+                  <div class="text-center m-t-lg m-b-lg">
+                  
+                    <ul class="pagination pagination-md">
+                    <?php if($n !== 1){?>
+                      <li><a href="<?php echo page_url($SITE['seo_url'],$n==1? 1 : $n-1);?>"><i class="fa fa-chevron-left"></i></a></li><?php }?>
+                      <?php PAGEING($SITE['seo_url'], $pageCount, $n, 8); ?>
+                     <?php if($n !== $pageCount){?><li><a href="<?php echo page_url($SITE['seo_url'],$n==$pageCount ? $pageCount : $n+1);?>"><i class="fa fa-chevron-right"></i></a></li><?php }?>
+                    </ul>
+                    
+                  </div>
+
+                </div>
+                
+                <div class="col-sm-3">
+               <!--  推荐文章 -->
+               <?php if(MendCount('article' , $config)){?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">推荐文章</div>
+                    <div class="panel-body">
+                    <?php $s=0;foreach ($APP as $ING_MEND){?>
+                 <?php if($ING_MEND['mend']){?>
+                      <article class="media">
+                        
+                        <div class="media-body">                        
+                          <i class="fa fa-angle-right"></i> <a href="<?php art_url($SITE['seo_url'], $SITE['seo_article_name'], $ING_MEND['id']);?>" class="font-semibold"><?php echo $ING_MEND['title'];?></a>
+                        </div>
+                      </article>
+                      <?php }?>
+                    <?php $s++;if($s==$SITE['article_mend']){break;}}?>
+                    </div>
+                  </div>
+                  <?php }?>
+                  <!-- ./ 推荐文章 -->
+                  
+                  
+                  <!--  文章分类 -->
+               <?php if($CountIfy){?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">全部分类</div>
+                    <div class="panel-body">
+                    <?php foreach ($IFY as $ING){?>
+                       <li class="list-group-item">
+                      <a href="<?php class_url($SITE['seo_url'], $SITE['seo_class_name'], $ING['pid']);?>">
+                        <span class="badge pull-right"><?php if($SITE['ify_ture_name']){echo IENDARTCOUNT($ING['pid'], $config);}?></span>
+                        <?php echo $ING['ify_name']?>
+                      </a>
+                    </li>
+                      
+                    <?php }?>
+                    </div>
+                  </div>
+                  <?php }?>
+                  <!-- ./ 文章分类 -->
+                  
+                  
+                   <!--  随机文章 -->
+               <?php if($CountIF){?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">随机文章</div>
+                    <div class="panel-body">
+                    <?php foreach ($RAND as $RANING){?>
+                      <article class="media">
+                        
+                        <div class="media-body">                        
+                          <i class="fa fa-angle-right"></i> <a href="<?php art_url($SITE['seo_url'], $SITE['seo_article_name'], $RANING['id']);?>" class="font-semibold"><?php echo $RANING['title'];?></a>
+                        </div>
+                      </article>
+                      <?php }?>
+                    </div>
+                  </div>
+                <?php }?>
+                  <!-- ./ 随机文章 -->
+                  
+                  <!--  友情链接 -->
+               <?php if ($Linking){?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">友情链接</div>
+                    <div class="panel-body">
+                     <?php foreach ($LINK as $links){ if($links['link_res']){?>
+                    <a style="margin-bottom: 5px;" href="<?php echo $links['link_url']?>" title="<?php echo $links['link_content']?>" class="btn btn-s-md btn-default" target="_blank"><?php echo $links['link_title']?></a>
+                    <?php } }?>
+                    </div>
+                  </div>
+                <?php }?>
+                  <!-- ./ 友情链接 -->
+                  
+									<!-- <div class="tags m-b-lg l-h-2x">
+										<a href="#" class="label bg-primary">Bootstrap</a> <a href="#"
+											class="label bg-primary">Application</a> <a href="#"
+											class="label bg-primary">Apple</a> <a href="#"
+											class="label bg-primary">Less</a> <a href="#"
+											class="label bg-primary">Theme</a> <a href="#"
+											class="label bg-primary">Wordpress</a>
+									</div> -->
+									                                    
+ 
+                    
+                    <!--  结束循环 -->
+                   <!--  <div class="line"></div>
+                    <article class="media m-t-none">
+                      <a class="pull-left thumb thumb-wrapper m-t-xs">
+                        <img src="<?php echo TEMP_URL?>/images/m2.jpg">
+                      </a>
+                      <div class="media-body">                        
+                        <a href="#" class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                        <div class="text-xs block m-t-xs"><a href="#">Design</a> 2 hours ago</div>
+                      </div>
+                    </article>
+                    <div class="line"></div>
+                    <article class="media m-t-none">
+                      <a class="pull-left thumb thumb-wrapper m-t-xs">
+                        <img src="<?php echo TEMP_URL?>/images/m3.jpg">
+                      </a>
+                      <div class="media-body">                        
+                        <a href="#" class="font-semibold">Sed diam nonummy nibh euismod tincidunt ut laoreet</a>
+                        <div class="text-xs block m-t-xs"><a href="#">MFC</a> 1 week ago</div>
+                      </div> 
+                    </article>-->
+                  </div>
+                </div>
+              </div>
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+
+                 <!--  底部加载 -->
+ <?php require_once TEMP_URL . 'footer.html';?>

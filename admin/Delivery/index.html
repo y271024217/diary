@@ -1,0 +1,108 @@
+<?php require_once 'head.html';?>
+                                                                         
+                    
+                    <div class="container">
+                        <div class="row">
+                            
+                            <div class="col-md-12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>美好心情</h2>                                        
+                                        <ul class="buttons">
+                                            <li><a href="#" class="block_loading"><span class="i-cycle"></span></a></li>
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>
+                                            <li><a href="#" class="block_remove"><span class="i-cancel-2"></span></a></li>
+                                        </ul>                                        
+                                        <div class="side fr">
+                                            <span class="label label-success">+<?php echo $TalkCount;?></span>
+                                        </div>                                        
+                                    </div>
+                                    <div class="content messages npr">
+                                        <div class="scroll" style="height: 240px;">
+                                        <?php foreach($Talk as $t){?>
+                                            <div class="item">
+                                                <div class="img">
+                                                    <img src="<?php echo $ver['img'];?>" class="img-thumbnail" style="width:35px; height:35px;"/>
+                                                </div>
+                                                <div class="info">
+                                                    <a href="#" class="name"><?php echo $t['at'];?></a>  <span class="muted"><?php echo date('Y-m-d H:i:s', $t['times']);?></span>
+                                                    <div class="text">
+                                                        
+                                                      <?php echo $t['content'];?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           <?php }?>
+                                           
+                                        </div>
+                                    </div>
+                                    <form action="?c=talk" method="post">
+                                    <div class="footer">
+                                        <div class="side npb">
+                                            <textarea class="form-control" name="content" placeholder="发表一条你现在的心情..."></textarea>                                                                                       
+                                        </div>
+                                        <div class="side fr npt">
+                                            <input type="submit" name="talk_submit" class="btn btn-primary" value="发表">                                           
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>                                
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>版本更新<small> v<?php echo $_VERSION;?></small></h2>
+                                        <ul class="buttons">                                                                                      
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>
+                                            <li><a href="#" class="block_remove"><span class="i-cancel-2"></span></a></li>
+                                        </ul>
+                                    </div>
+                                 
+                                    <div class="content np">
+                                        <table cellpadding="0" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>更新日期</th>
+                                                    <th>最新版本</th>
+                                                    <th>通信状态</th>
+                                                    <th>更新</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><?php if ($POCENT_VERSION){?><?php echo $POCENT_UPDATE_DATE;?><?php }else{echo '<protty style="color: red;"><i class="i-cancel-2"></i> 获取失败</protty>';};?></td>
+                                                    <td><?php if ($POCENT_VERSION){?><?php echo $POCENT_VERSION;?><?php }else{echo '<protty style="color: red;"><i class="i-cancel-2"></i> 获取失败</protty>';};?></td>
+                                                    <td><?php echo $POCENT_COMM;?></td>
+                                                    <td>
+                                                    <?php if ($POCENT_VERSION){?>
+                                                    <?php if($_VERSION == $POCENT_VERSION){echo "已是最新";}else{?><a href='?c=update'><button class="btn btn-xs btn-success" type="button">快速更新</button></a><?php }?>
+                                                    <?php }else{echo '<protty style="color: red;"><i class="i-cancel-2"></i> 获取失败</protty>';};?>
+                                                    </td>
+                                                </tr>
+                                                                            
+                                            </tbody>                                            
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        
+                        
+                        
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

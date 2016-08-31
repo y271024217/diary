@@ -1,0 +1,14 @@
+<!-- FLV/代码开始 -->
+<script type="text/javascript" src="<?php echo TEMP_URL;?>/js/FlvPlayer/swfobject.js"></script>
+<div id="FLV" ></div>
+<script type="text/javascript">
+var so = new SWFObject("<?php echo TEMP_URL;?>/js/FlvPlayer/vcastr2.swf","ply","100%","469","9","#000000");
+so.addParam("allowfullscreen","ture");
+so.addParam("allowscriptaccess","always");
+so.addParam("wmode","opaque");
+so.addParam("quality","high");
+so.addParam("salign","lt");
+so.addVariable("vcastr_file","http://www.cnsuning.com/snsite/uploadfile/video/20120708/ee6e7ed8.flv");
+so.write("FLV");
+</script>
+<!-- FLV/代码结束 -->

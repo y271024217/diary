@@ -1,0 +1,97 @@
+<?php require_once 'head.html';?>                                                             
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="block">
+                                    <div class="head">                                        
+                                        <h2>修改文章</h2>
+                                      
+                                    </div>                
+                                    <div class="content np">                
+
+                                        <form action="?c=opt&ip=edit&id=<?php echo $_GET['id'];?>" method="post">
+                                                <fieldset title="Step 1">                            
+ 
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">文章标题:</div>
+                                                            <div class="col-md-5">
+                                                                <input type="text" name="title" class="validate[required,minSize[4]] form-control" value="<?php echo $EditArticle['title'];?>"/>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                        <div class="controls-row">
+                                                        <?php if($EditArticle['type']=='music' || $EditArticle['type']=='video'){?>
+                                                            <div class="col-md-2">备注信息:</div>
+                                                            <div class="col-md-10">
+                                                                <textarea name="content" style="width:100%;height:300px;"><?php echo $EditArticle['content'];?></textarea>
+                                                            </div>
+                                                            <?php }else{?>
+                                                            <div class="col-md-2">内容:</div>
+                                                            <div class="col-md-10">
+                                                                 <textarea name="content" id="editor" style="width:100%;height:300px;"><?php echo $EditArticle['content'];?></textarea>
+                                                            </div>
+                                                            <script type="text/javascript" src="Editor/getEditor.js"></script>
+                                                          <?php }?>
+                                                        </div>                                
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">资源连接:</div>
+                                                            <div class="col-md-5">
+                                                                <input type="text" name="rlink" class="validate[required,custom[email]] form-control" value="<?php echo $EditArticle['rlink'];?>" placeholder="可为空,大多数用来做音乐地址或视频地址.."/>
+                                                            </div>
+                                                        </div>    
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">资源图片:</div>
+                                                            <div class="col-md-5">
+                                                                <input type="text" name="image_link" class="validate[required,custom[email]] form-control" value="<?php echo $EditArticle['image_link'];?>" placeholder="可为空,音乐用来作为歌曲LOGO,视频作为列表显示的时候展示用.."/>
+                                                            </div>
+                                                        </div> 
+                                                         <div class="controls-row">
+                                                            <div class="col-md-2">文章分类:</div>
+                                                            <div class="col-md-5">
+                                                               <select name="ify">
+							<option value='0'>未分类</option>
+							<?php foreach ($ify as $v){
+							if ($v['pid']==$EditArticle['ify']){
+                             echo "<option value='$v[pid]' selected='selected'>$v[ify_name]</option>";
+                                 }else{
+                             echo "<option value='$v[pid]'>$v[ify_name]</option>";
+                                 }
+							
+							?>	
+							<?php }?>
+							</select>
+                                                            </div>
+                                                        </div>  
+                                                        
+                                                        <div class="controls-row">
+                                                            <div class="col-md-2">文章推荐:</div>
+                                                            <div class="col-md-5">
+                                                                <input type="radio" name="mend" value="0" <?php echo !$EditArticle['mend']? 'checked="checked"':""?>>不推荐  &nbsp;
+							<input type="radio" name="mend" value="1" <?php echo $EditArticle['mend']? 'checked="checked"':""?>>推荐
+                                                            </div>
+                                                        </div>                               
+                                                </fieldset>
+                                                <input name="edit_submit" type="submit" class="btn btn-primary finish" value="保存修改">
+                                        </form>                
+
+                                    </div>
+
+                                </div>
+
+                            </div>            
+
+                        </div>                        
+                        
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

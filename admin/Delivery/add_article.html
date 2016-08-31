@@ -1,0 +1,126 @@
+<?php require_once 'head.html';?>                                                             
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="block">
+                                    <div class="head">                                        
+                                        <h2>添加文章</h2>
+                                      
+                                    </div>                
+                                    <div class="content np">                
+
+                                        <form class="form-horizontal" action="?c=add_page" method="post">
+				<fieldset>
+					<div class="controls-row">
+						<div class="col-md-2">文章标题</div>
+						<div class="col-md-10">
+							<input style="height:27.9861px;" name="title" type="text" class="validate[required,minSize[4]] form-control" id="role" />
+						</div>
+					</div>
+					<div id="type">
+					<div id="c_con">
+						<div class="col-md-2" id="contents">内容</div>
+						</div>
+						<div class="col-md-10">
+
+				 <div>
+    <textarea name="content" id="editor" style="width:100%;height:300px;"></textarea>
+</div>
+
+
+
+						</div>
+					
+					<script type="text/javascript" src="Editor/getEditor.js"></script>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">资源链接</div>
+						<div class="col-md-10">
+							<input style="height:27.9861px;" name="rlink" type="text" class="validate[required,minSize[4]] form-control" id="slug" placeholder="可为空,用来做音乐地址或视频地址.."/>
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2">资源图片</div>
+						<div class="col-md-10">
+							<input style="height:27.9861px;" name="image_link" type="text" class="validate[required,minSize[4]] form-control" id="image_link" placeholder="可为空,音乐用来作为歌曲LOGO,视频作为列表显示的时候展示用.."/>
+						</div>
+					</div>
+					<div id="rose"></div>
+					
+					<div class="controls-row">
+						<div class="col-md-2">文章分类</div>
+						<div class="col-md-10">
+							<select name="ify">
+							<option value='0'>未分类</option>
+							<?php foreach ($ify as $v){?>
+							<option value='<?php echo $v['pid']?>'><?php echo $v['ify_name']?></option>
+							<?php }?>
+							</select>
+						</div>
+					</div>
+					
+					<div class="controls-row">
+						<div class="col-md-2">文章推荐</div>
+						<div class="col-md-10">
+							<input type="radio" name="mend" value="0" checked="checked">不推荐  &nbsp;
+							<input type="radio" name="mend" value="1">推荐
+						</div>
+					</div>
+					<script>
+					function DelContent(){
+						var art = document.getElementById('art');
+						if (art.value!=='article' && art.value!=='images' && art.value!=='down'){
+							var child = document.getElementById("contents");
+							 child.parentNode.removeChild(child); 
+							/* document.getElementById("type").className=""; */
+						    UE.getEditor('editor').setHide();
+						    document.getElementById('rose').innerHTML='<div id="top_rose"><div class="controls-row"><div class="col-md-2">备注信息</div><div class="col-md-10"><textarea name="con_rose" style="width:100%;height:300px;" placeholder="如果是歌曲这里就填写歌曲的作者,如果是视频就写视频的信息或者介绍.."></textarea></div></div></div>';
+						}else{
+							document.getElementById("c_con").innerHTML='<div class="col-md-2" id="contents">内容</div>';  
+							UE.getEditor('editor').setShow();
+						  /*   document.getElementById("type").className="control-group";  */
+							var childs = document.getElementById("top_rose");
+							childs.parentNode.removeChild(childs);
+						}
+                         
+					}
+					</script>
+					<div class="controls-row">
+						<div class="col-md-2">栏目类型</div>
+						<div class="col-md-10">
+							<select name="section" onchange="DelContent();" id="art">
+							<option value='article'>文章栏目</option>
+							<option value='images'>图片栏目</option>
+							<option value='video'>视频栏目</option>
+							<option value='music'>音乐栏目</option>
+							<option value='down'>下载栏目</option>
+							</select>
+						</div>
+					</div>
+					<div class="controls-row">
+						<div class="col-md-2"><input name="add_article" type="submit" class="btn btn-success btn-large" value="发布文章" />
+					</div></div>					
+				</fieldset>
+			</form>
+
+                                    </div>
+
+                                </div>
+
+                            </div>            
+
+                        </div>                        
+                        
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>
